@@ -1,0 +1,62 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,*::before, *::after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-size: inherit;
+}
+
+button, input, textarea {
+  border: none;
+  outline: none;
+  font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  position: relative;
+  color: $textPrimaryColor;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.container {
+  margin: 0 50px;
+  @include smMaxBreakPoint {
+    margin: 0 20px;
+  }
+}
+
+.hidden-stub {
+  display: none;
+}

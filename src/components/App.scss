@@ -1,0 +1,5 @@
+@import '../sassStyles/variables';
+
+.app__wrapper {
+    @extend %title-text;
+}
