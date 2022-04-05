@@ -1,5 +1,6 @@
 @import '../sassStyles/variables';
 
 .app__wrapper {
-    @extend %title-text;
+    width: 100vw;
+    height: 100vh;
 }

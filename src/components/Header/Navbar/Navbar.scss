@@ -1,0 +1,30 @@
+@import '../../../sassStyles/variables';
+
+.navbar {
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 33px;
+    }
+    &__list-item {
+
+    }
+
+
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        &-icon {
+            width: 26px;
+        }
+        &-label {
+            display: none;
+            color: $textSecondaryColor;
+            text-transform: uppercase;
+            margin-right: 10px;
+        }
+    }
+}
