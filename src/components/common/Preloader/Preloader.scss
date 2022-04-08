@@ -1,0 +1,50 @@
+.preloader {
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0; // todo: calc indent (with menu changing width)
+        z-index: 888;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: #444;
+    }
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 200px;
+    }
+    &__progress-line {
+        width: 100%;
+        height: 6px;
+        border: 1px solid rgba(255,255,255, .6);
+    }
+    &__progress-line-inner {
+        height: 100%;
+        background-color: red;
+        animation: simulateProgress;
+    }
+}
+
+
+
+@keyframes simulateProgress {
+    0% {
+        width: 0%;
+    }
+    20% {
+        width: 10%;
+    }
+    60% {
+        width: 40%;
+    }
+    70% {
+        width: 60%;
+    }
+    100% {
+        width: 100%;
+    }
+}
