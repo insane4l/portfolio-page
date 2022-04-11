@@ -1,0 +1,45 @@
+@import '../../../sassStyles/variables';
+
+
+.main-logo {
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        padding: 4px 0 6px 4px;
+        background-color: transparent;
+        border: 2px solid rgba(255,255,255, .1);
+        border-radius: 4px;
+        span {
+            display: flex; // !!!!important for animation without twitching
+            height: 22px;
+            line-height: 25px;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            letter-spacing: 6px;
+            transition: 0.6s all;
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+        span:nth-child(1) {
+            width: 128px;
+            color: $primaryTextColor;
+            overflow: hidden;
+        }
+        span:nth-child(2) {
+            color: red;
+            transform: rotate(0) translateX(0) translateY(0);
+        }
+    }
+
+}
+
+.main-logo_collapsed {
+    span:nth-child(1) {
+        width: 18px;
+    }
+    span:nth-child(2) {
+        transform: rotate(-90deg) translateX(9%) translateY(-5px);
+        
+    }
+}

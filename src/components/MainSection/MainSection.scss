@@ -1,6 +1,9 @@
+@import '../../sassStyles/variables';
+
 .main-section {
-    width: 100%;
+    position: relative; // dont change (preloader(absolute) is depend from this SIZE + POSITION)
+    width: 100%; // (body 100vw 100vh)
     height: 100%;
-    background-color:teal;
-    padding-left: 80px; // todo: fix
+    background-color: $primaryBgColor;
+    padding-left: 180px; // left menu max width 180px
 }

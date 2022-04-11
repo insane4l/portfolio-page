@@ -8,19 +8,22 @@ $screen-full: 1400px;
 
 
 
+// MAIN COLORS
+// elements (some buttons, borders, lines etc)
+$primaryColor: #ff7c25;
+$secondaryColor: #2f9896;
+
 // BACKGROUND COLORS
-$primaryColor: #193fb4;
-$primaryLightColor: lighten($primaryColor, 25%); // elements (some buttons, borders, lines etc)
-
-$secondaryColor: #ecf1f5;
-
+$primaryBgColor: #000000; // main background color (body, sections, etc)
+// $secondaryBgColor: #222222; // secondary background color (some blocks and other elements)
+// $secondaryBgColor: #212121; // secondary background color (some blocks and other elements)
+$secondaryBgColor: #111222; // secondary background color (some blocks and other elements)
 
 // TEXT COLORS
-$textPrimaryColor: #545454; // main
-$textSecondaryColor: #666666; // description
-
-$textDarkColor: #353535;
-$textLightColor: #eeedf8;
+$primaryTextColor: #ffffff;
+$secondaryTextColor: #989a9c;
+$darkTextColor: #353535;
+// $lightTextColor: #eeedf8;
 
 
 
@@ -32,16 +35,25 @@ $warningColor: #b3465c;
 
 
 // ________Text Extends
+%section-title {
+    font-family: 'Heebo', sans-serif;
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: 900;
+    color: $primaryTextColor;
+}
+
+
 %title-text {
     font-size: 1.1rem;
     font-weight: 600;
-    color: $textPrimaryColor;
+    color: $primaryTextColor;
 }
 
 %descr-text {
     font-size: 1.03rem;
     font-weight: 300;
-    color: $textSecondaryColor;
+    color: $primaryTextColor;
 }
 
 

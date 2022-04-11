@@ -1,5 +1,5 @@
-import React from 'react'
-import { NavLink } from "react-router-dom"
+import React, { FC } from 'react'
+import { NavLink, useNavigate } from "react-router-dom"
 import './Navbar.scss'
 
 // import * as icons from '../../../assets/icons/icons'
@@ -14,13 +14,15 @@ const navbarItems = [
     { label: 'Contact', icon: navIcons.contact1, url: '/contact/'}
 ]
 
-export const Navbar = () => {
+export const Navbar: FC<NavbarPropsType> = ({collapseMode}) => {
 
     const mappedItems = navbarItems.map(el => <NavbarItem key={el.label} {...el} />)
 
+    const navbarListCN = collapseMode ? 'navbar__list navbar__list_collapsed' : 'navbar__list'
+
     return (
         <nav className="navbar">
-            <ul className="navbar__list">
+            <ul className={navbarListCN}>
                 {mappedItems}
             </ul>
         </nav>
@@ -29,10 +31,22 @@ export const Navbar = () => {
 
 
 
-const NavbarItem: React.FC<NavbarItemPropsType> = ({label, icon, url}) => {
+const NavbarItem: FC<NavbarItemPropsType> = ({label, icon, url}) => {
+
+    // const navigate = useNavigate();
+
+    // const onClickHandler = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    //     e.preventDefault()
+
+    //     setTimeout(() => {
+    //         navigate(url)
+    //     }, 2222)
+    // }
+
     return (
         <li className="navbar__list-item">
-             <NavLink to={url} className="navbar__link">
+             <NavLink to={url}
+                className={({ isActive }) => isActive ? "navbar__link navbar__link-active" : "navbar__link"}>
                 <img className="navbar__link-icon" src={icon} alt={label} />
                 <div className="navbar__link-label">{label}</div>
             </NavLink>
@@ -42,5 +56,5 @@ const NavbarItem: React.FC<NavbarItemPropsType> = ({label, icon, url}) => {
 
 
 
-
+type NavbarPropsType = {collapseMode: boolean}
 type NavbarItemPropsType = { label: string, icon: string, url: string }

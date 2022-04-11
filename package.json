@@ -1,5 +1,6 @@
 {
   "name": "karpeyev-com",
+  "homepage": "https://insane4l.github.io/portfolio-page",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +15,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
+    "react-transition-group": "^4.4.2",
     "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
@@ -21,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "@types/react-transition-group": "^4.4.4",
+    "gh-pages": "^3.2.3",
     "sass": "^1.49.11"
   }
 }

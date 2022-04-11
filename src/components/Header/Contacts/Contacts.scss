@@ -1,14 +1,45 @@
 .contacts {
+    width: 100%;
     &__list {
+        transform: rotate(-90deg);
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 6px;
+        transition: .6s all;
         &-item {
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            transition: .6s all;
         }
+    }
+    &__link {
+        transform: rotate(90deg);
+        display: flex;
+        justify-content: center;
+        width: 32px;
+        padding: 9px 0;
+        transition: .6s transform;
+    }
+    &__link:hover {
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(303deg) brightness(102%) contrast(102%);
     }
     &__icon {
         width: 14px;
+        -webkit-user-drag: none;
+        user-select: none;
+    }
+}
+
+
+.contacts__list_collapsed {
+    width: 100%;
+    transform: rotate(0);
+    .contacts__list-item {
+        width: 100%;
+    }
+    .contacts__link {
+        width: 100%;
+        transform: rotate(0);
     }
 }

@@ -1,0 +1,72 @@
+.home-section {
+    &__descr {
+        
+    }
+    &__title {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+        span {
+            margin-bottom: 6px;
+        }
+        span:nth-child(3) {
+            align-self: flex-end;
+            margin-right: 36px;
+        }
+    }
+    &__buttons {
+        display: flex;
+        gap: 22px;
+    }
+    &__btn {
+        padding: .8em 2.1em;
+        border: 2px solid #007ced;
+        // border: 2px solid red;
+        border-radius: 30px;
+        font-family: 'Maven Pro', sans-serif;
+        box-shadow: 0 10px 10px -8px rgb(0 0 0 / 78%);
+        text-transform: uppercase;
+    }
+    &__image {
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        height: 100%;
+        margin-left: auto;
+        margin-right: 10px;
+        img {
+            height: 100%;
+        }
+    }
+}
+
+
+
+
+
+
+
+.roles__item {
+    position: absolute;
+    display: inline-block;
+    padding: 0 6px;
+    background-color: red;
+    color: #fff;
+    animation: fadeInOut;
+    // animation-direction: alternate;
+}
+
+@keyframes fadeInOut {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+}

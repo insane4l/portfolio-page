@@ -1,11 +1,16 @@
+@import '../../sassStyles/variables';
+
 .header {
     position: fixed;
+    z-index: 999;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+    max-width: 180px;
     height: 100vh;
-    padding: 15px;
-    background-color: #222;
+    padding: 15px 10px;
+    background-color: $secondaryBgColor;
 }
