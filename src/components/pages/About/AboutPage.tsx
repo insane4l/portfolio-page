@@ -1,30 +1,40 @@
 import React from 'react'
-import { Preloader } from '../../common/Preloader/Preloader'
+import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection';
 import './AboutPage.scss'
+import '../SectionInnerTemplate.scss'
 
 
 export const AboutPage = () => {
     const preloaderDuration = 900;
 
-    // Preloader element must be first because it depends on the CSSTransition
+
     return (
-        <>
-            <Preloader duration={preloaderDuration}/>
-            <section style={{animationDelay: `${preloaderDuration}ms`}} className="section about-section">
-                <div className="section-descr about-section__descr">
-                    <div>
-                        <h2 className="section-title about-section__title">About me</h2>
-                        <p className="about-section__descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit et eos nemo ratione. Nulla veritatis similique iste laboriosam illum quibusdam ducimus. Commodi facere eveniet molestiae non iste quis a, aut nisi magni, ut eius maiores porro dolorem. Quisquam, eum vitae earum facilis sapiente odio eligendi architecto cum saepe quas ad iusto. Ex, eum! Magni aut explicabo similique eum voluptatibus id </p>
-                    </div>
+
+        <AnimatedSection preloaderDuration={preloaderDuration}>
+
+            <div className="section__content about-section">
+                <div className="section__content-block">
+                    <h2 className="section-title about-section__title">About me</h2>
+                    <p className="about-section__descr">
+                        <span>
+                            I am a front-end developer and I have experience in creating SPA and dynamic web-interfaces.
+                            I use the following tech stack: React, TypeScript/JavaScript, Redux.
+                        </span>
+
+                        <span>
+                            I prefer to spend my free time on codewars.com or with educational books.
+                            I enjoy what I do and I am focused on personal professional development.
+                        </span>
+                    </p>
                 </div>
-               
-                <div>
+
+                <div className="section__content-block">
                     some animation will be here
                 </div>
-                
+            </div>
 
-            </section>
-        </>
-        
+        </AnimatedSection>
+
+
     )
 }

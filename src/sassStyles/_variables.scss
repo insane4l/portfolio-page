@@ -10,21 +10,23 @@ $screen-full: 1400px;
 
 // MAIN COLORS
 // elements (some buttons, borders, lines etc)
-$primaryColor: #ff7c25;
+$primaryColor: #ec1839;
+// $primaryColor: #ff7c25;
 $secondaryColor: #2f9896;
 
 // BACKGROUND COLORS
-$primaryBgColor: #000000; // main background color (body, sections, etc)
+$primaryBgColor: #010101; // main background color (body, sections, etc)
+$secondaryBgColor: #161616; // secondary background color (some blocks and other elements)
+$secondaryBgColorLight: lighten($secondaryBgColor, 5%); // secondary background color (some blocks and other elements)
+// $primaryBgColor: #141414; // main background color (body, sections, etc)
 // $secondaryBgColor: #222222; // secondary background color (some blocks and other elements)
-// $secondaryBgColor: #212121; // secondary background color (some blocks and other elements)
-$secondaryBgColor: #111222; // secondary background color (some blocks and other elements)
+// $secondaryBgColor: #111222; // secondary background color (some blocks and other elements)
 
 // TEXT COLORS
 $primaryTextColor: #ffffff;
 $secondaryTextColor: #989a9c;
 $darkTextColor: #353535;
 // $lightTextColor: #eeedf8;
-
 
 
 // ________Other Colors
@@ -36,10 +38,14 @@ $warningColor: #b3465c;
 
 // ________Text Extends
 %section-title {
-    font-family: 'Heebo', sans-serif;
-    font-size: 50px;
-    line-height: 50px;
-    font-weight: 900;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 54px;
+    line-height: 64px;
+    font-weight: 700;
+    // font-family: 'Heebo', sans-serif;
+    // font-size: 50px;
+    // line-height: 50px;
+    // font-weight: 900;
     color: $primaryTextColor;
 }
 
@@ -51,9 +57,15 @@ $warningColor: #b3465c;
 }
 
 %descr-text {
+    font-family: "Open Sans", sans-serif;
+    // font-size: 17px;
+    // line-height: 27px;
+    // font-weight: 400;
+    // font-family: 'Roboto', sans-serif;
     font-size: 1.03rem;
-    font-weight: 300;
-    color: $primaryTextColor;
+    line-height: 1.4rem;
+    font-weight: 400;
+    color: $secondaryTextColor;
 }
 
 

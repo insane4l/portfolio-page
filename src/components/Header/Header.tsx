@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Navbar } from './Navbar/Navbar'
 import './Header.scss'
-import { MainLogo } from './MainLogo/MainLogo'
+import { MainLogo } from '../common/MainLogo/MainLogo'
 import { Contacts } from './Contacts/Contacts'
 
 export const Header = () => {
@@ -14,7 +14,7 @@ export const Header = () => {
 
     return (
         <header className="header">
-            <MainLogo toggleCollapseMode={toggleCollapseMode} collapseMode={collapseMode} />
+            <MainLogo toggleCollapseMode={toggleCollapseMode} collapseMode={collapseMode} withBorder/>
             <Navbar collapseMode={collapseMode} />
             <Contacts collapseMode={collapseMode} />
         </header>

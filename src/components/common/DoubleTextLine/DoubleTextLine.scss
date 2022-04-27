@@ -1,0 +1,76 @@
+@import '../../../sassStyles/variables';
+
+.dtl {
+    &__wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        user-select: none;
+        -webkit-user-drag: none;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    &__text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        white-space: nowrap;
+    }
+    &__primary {
+        color: $primaryTextColor;
+        position: relative;
+        z-index: 1;
+    }
+    &__secondary {
+        color: $secondaryTextColor;
+        position: absolute;
+        opacity: 0;
+    }
+
+}
+
+
+.dtl {
+    &__wrapper:hover {
+
+        .dtl__primary {
+            &_p1 {
+                animation: flipTopCounterclockwise .6s forwards;
+            }
+            &_p2 {
+                animation: flipTopClockwise .6s forwards;
+            }
+        }
+
+        .dtl__secondary {
+            animation: fadeInUp .6s forwards;
+        }
+    }
+}
+
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes flipTopCounterclockwise {
+    to {
+        transform: translateY(-100%) rotate(-360deg);
+    }
+}
+
+@keyframes flipTopClockwise {
+    to {
+        transform: translateY(-100%) rotate(360deg);
+    }
+}

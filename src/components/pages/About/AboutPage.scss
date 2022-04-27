@@ -11,5 +11,9 @@
     }
     &__descr {
         max-width: 600px;
+        span {
+            display: block;
+            margin: 1rem 0;
+        }
     }
 }

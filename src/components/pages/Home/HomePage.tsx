@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo } from 'react'
 import { NavLink } from 'react-router-dom'
-import { Preloader } from '../../common/Preloader/Preloader'
 import { TextSlider } from '../../common/TextSlider/TextSlider'
 import './HomePage.scss'
 import image_stub from '../../../assets/images/temporary_low_q_png.png'
+import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection'
 
 
 export const HomePage = () => {
@@ -17,18 +17,22 @@ export const HomePage = () => {
         }, 2222)
     }, [])
 
-    // Preloader element must be first because it depends on the CSSTransition
+
     return (
-        <>
-            <Preloader duration={preloaderDuration}/>
-            <section style={{animationDelay: `${preloaderDuration}ms`}} className="section home-section">
- 
-                <div className="section-descr home-section__descr">
+        <AnimatedSection preloaderDuration={preloaderDuration}>
+            <div className="home-section">
+
+                <div className="home-section__welcome-block">
                     <h2 className="section-title home-section__title">
                         <span>Hi there,</span>
                         <span>I'm Roman Karpeyev</span>
-                        <span>- aka insane4L</span>
-                        <span>I'm a <TextSlider items={roles} className="roles__item" /></span>
+                        <span>- aka insane4L</span> {/*todo: delete this line (show instead of my name when hovered)*/}
+                        <span>
+                            <span>I'm a </span>
+                            <span className="roles__wrapper">
+                                <TextSlider items={roles} className="roles__item" />
+                            </span>
+                        </span>
                     </h2>
 
                     <div className="home-section__buttons">
@@ -41,7 +45,8 @@ export const HomePage = () => {
                     <img src={image_stub} alt="" />
                 </div>
 
-            </section>
-        </>
+            </div>
+
+        </AnimatedSection>
     )
 }

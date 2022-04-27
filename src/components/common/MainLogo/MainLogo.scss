@@ -2,12 +2,16 @@
 
 
 .main-logo {
+    &_with-border{
+        .main-logo__wrapper {
+            border: 2px solid rgba(255,255,255, .1);
+        }
+    }
     &__wrapper {
         display: flex;
         align-items: center;
         padding: 4px 0 6px 4px;
         background-color: transparent;
-        border: 2px solid rgba(255,255,255, .1);
         border-radius: 4px;
         span {
             display: flex; // !!!!important for animation without twitching
@@ -27,7 +31,7 @@
             overflow: hidden;
         }
         span:nth-child(2) {
-            color: red;
+            color: $primaryColor;
             transform: rotate(0) translateX(0) translateY(0);
         }
     }

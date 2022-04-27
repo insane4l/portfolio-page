@@ -1,6 +1,16 @@
+@import '../../../sassStyles/variables';
+
 .home-section {
-    &__descr {
-        
+    // background: url('../../../assets/images/temporary_low_q_png.png');
+    // background-position: right 50px bottom 0;
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    &__welcome-block {
+        position: absolute;
+	    top: 20%;
+	    left: 0;
     }
     &__title {
         display: flex;
@@ -12,6 +22,7 @@
         span:nth-child(3) {
             align-self: flex-end;
             margin-right: 36px;
+            margin-bottom: 30px;
         }
     }
     &__buttons {
@@ -20,8 +31,7 @@
     }
     &__btn {
         padding: .8em 2.1em;
-        border: 2px solid #007ced;
-        // border: 2px solid red;
+        border: 2px solid $primaryColor;
         border-radius: 30px;
         font-family: 'Maven Pro', sans-serif;
         box-shadow: 0 10px 10px -8px rgb(0 0 0 / 78%);
@@ -43,15 +53,21 @@
 
 
 
-
+.roles__wrapper {
+    // border: 2px solid #fff;
+    // min-width: 10px;
+    // margin-right: 33px;
+    // transition: 1s all;
+}
 
 
 .roles__item {
-    position: absolute;
+    position: relative;
     display: inline-block;
-    padding: 0 6px;
-    background-color: red;
-    color: #fff;
+    padding: 4px;
+    color: $primaryColor;
+    // background-color: $primaryColor;
+    // color: #fff;
     animation: fadeInOut;
     // animation-direction: alternate;
 }
