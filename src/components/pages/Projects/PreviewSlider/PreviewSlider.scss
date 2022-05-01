@@ -1,0 +1,58 @@
+@import '../../../../sassStyles/variables';
+
+.preview-slider {
+    position: relative;
+    width: 690px;
+    height: 150px;
+    padding: 0 30px;
+    &__item {
+        width: auto;
+        height: 150px;
+        overflow: hidden;
+        cursor: pointer;
+        img {
+            min-height: 100%;
+            max-width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+
+.swiper-prev-arrow, .swiper-next-arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgba($primaryColor, .04);
+        &::after {
+            width: 12px;
+            height: 12px;
+        }
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 11px;
+        height: 11px;
+        border-bottom: 2px solid $primaryColor;
+        border-left: 2px solid $primaryColor;
+    }
+}
+.swiper-prev-arrow {
+    left: 0;
+    &::after {
+        transform: rotate(45deg);
+        left: 6px;
+    }
+}
+.swiper-next-arrow {
+    right: 0;
+    &::after {
+        transform: rotate(-135deg);
+        right: 6px;
+    }
+}

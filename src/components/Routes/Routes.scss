@@ -2,7 +2,7 @@
     // preloader show
     &-enter {
         z-index: 22;
-        opacity: 0;
+        opacity: .4;
         transform: translateX(-100%);
     }
     &-enter-active {

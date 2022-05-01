@@ -1,7 +1,8 @@
 import React from 'react'
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection';
 import './AboutPage.scss'
-import '../SectionInnerTemplate.scss'
+import { FlyingElementsBg } from '../../common/FlyingElementsBg/FlyingElementsBg';
+
 
 
 export const AboutPage = () => {
@@ -12,12 +13,14 @@ export const AboutPage = () => {
 
         <AnimatedSection preloaderDuration={preloaderDuration}>
 
-            <div className="section__content about-section">
-                <div className="section__content-block">
+            <div className="about-section">
+                <FlyingElementsBg />
+
+                <div>
                     <h2 className="section-title about-section__title">About me</h2>
                     <p className="about-section__descr">
                         <span>
-                            I am a front-end developer and I have experience in creating SPA and dynamic web-interfaces.
+                            I am a front-end developer from Estonia and I have experience in creating SPA and dynamic web-interfaces.
                             I use the following tech stack: React, TypeScript/JavaScript, Redux.
                         </span>
 
@@ -28,7 +31,7 @@ export const AboutPage = () => {
                     </p>
                 </div>
 
-                <div className="section__content-block">
+                <div>
                     some animation will be here
                 </div>
             </div>

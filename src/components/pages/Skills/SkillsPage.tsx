@@ -1,5 +1,6 @@
 import React from 'react'
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection'
+import { DoubleTextLine } from '../../common/DoubleTextLine/DoubleTextLine';
 import './SkillsPage.scss'
 
 
@@ -10,8 +11,13 @@ export const SkillsPage = () => {
         <AnimatedSection preloaderDuration={preloaderDuration}>
             <div className="skills-section">
 
-            <div><h2 className="section-title skills-section__title">Skills & Experience</h2></div>
-            <div></div>
+                <div><h2 className="section-title skills-section__title">Skills & Experience</h2></div>
+                <div style={{display: 'flex', flexDirection: 'column'}}>
+                    <DoubleTextLine primaryText={['firsfgfsdgsdfgsdfgdfsgdfsgd', 'lifdgfdsgdfsgfdsgdfsgdfs']} secondaryText='Secdfsgdfsgfdsgsdfgsdfgdsfgdfgond linedddddfsdgsdfgdfsgdfsgdfsgdddddddddd'/>
+                    <DoubleTextLine primaryText={['somename', '']} secondaryText='Watch Demo'/>
+                    <DoubleTextLine primaryText={['Todo', 'Lists']} secondaryText='Watch Demo'/>
+                    <DoubleTextLine primaryText={['Social', 'Network']} secondaryText='Watch Demo'/>
+                </div>
 
             </div>
         </AnimatedSection>

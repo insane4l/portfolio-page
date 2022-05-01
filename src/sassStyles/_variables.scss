@@ -52,6 +52,7 @@ $warningColor: #b3465c;
 
 %title-text {
     font-size: 1.1rem;
+    line-height: 1.1rem;
     font-weight: 600;
     color: $primaryTextColor;
 }
@@ -68,7 +69,12 @@ $warningColor: #b3465c;
     color: $secondaryTextColor;
 }
 
-
+%decorated-text {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.06rem;
+    color: $secondaryTextColor;
+}
 
 
 // // ________Buttons Extends

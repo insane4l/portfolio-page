@@ -7,7 +7,7 @@ export const AnimatedSection: React.FC<AnimatedSectionType> = ({children, preloa
     // Preloader element must be first because it depends on the CSSTransition
     return (
         <>
-            <Preloader duration={preloaderDuration}/>
+            <Preloader duration={preloaderDuration} label="Yeah I'm working.." />
             <section className="section">
                 <div style={{animationDelay: `${preloaderDuration}ms`}} className="section__inner">
 

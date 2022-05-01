@@ -39,11 +39,21 @@ import contact6 from './navbar_icons/Contact/contact6.svg'
 
 
 
+import fullscreenIcon from './fullscreen.svg'
+import projectDemoLinkIcon from './share.svg'
+import projectGithubLinkIcon from './github2.svg'
+
+
+
 // CONTACT ICONS
 import linkedinIcon from './contacts/linkedin.svg';
 import githubIcon from './contacts/github.svg';
 import instagramIcon from './contacts/instagram.svg';
 import telegramIcon from './contacts/telegram.svg';
+
+export const projectDescrIcons = {
+    fullscreenIcon, projectDemoLinkIcon, projectGithubLinkIcon
+}
 
 export const navIcons = {
     home1, home2, home3,

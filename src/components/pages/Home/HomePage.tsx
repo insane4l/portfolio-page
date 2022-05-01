@@ -4,6 +4,7 @@ import { TextSlider } from '../../common/TextSlider/TextSlider'
 import './HomePage.scss'
 import image_stub from '../../../assets/images/temporary_low_q_png.png'
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection'
+import { FlyingElementsBg } from '../../common/FlyingElementsBg/FlyingElementsBg'
 
 
 export const HomePage = () => {
@@ -21,12 +22,16 @@ export const HomePage = () => {
     return (
         <AnimatedSection preloaderDuration={preloaderDuration}>
             <div className="home-section">
+                <FlyingElementsBg />
 
                 <div className="home-section__welcome-block">
                     <h2 className="section-title home-section__title">
                         <span>Hi there,</span>
-                        <span>I'm Roman Karpeyev</span>
-                        <span>- aka insane4L</span> {/*todo: delete this line (show instead of my name when hovered)*/}
+                        <span className="names">
+                            <span>I'm Roman Karpeyev</span>
+                            <span className="nickname">aka insane4L</span>
+                        </span>
+                        {/* <span>- aka insane4L</span> todo: delete this line (show instead of my name when hovered) */}
                         <span>
                             <span>I'm a </span>
                             <span className="roles__wrapper">
@@ -36,15 +41,14 @@ export const HomePage = () => {
                     </h2>
 
                     <div className="home-section__buttons">
-                        <a className="home-section__btn" href="">Download CV</a>
-                        <NavLink className="home-section__btn" to="/contact/" >Contact me</NavLink>
+                        <a className="button home-section__btn" href="">Download CV</a>
+                        <NavLink className="button home-section__btn" to="/contact/" >Contact me</NavLink>
                     </div>
                 </div>
 
                 <div className="home-section__image">
                     <img src={image_stub} alt="" />
                 </div>
-
             </div>
 
         </AnimatedSection>

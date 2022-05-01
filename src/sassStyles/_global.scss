@@ -11,7 +11,7 @@ html {
 *,
 *::before,
 *::after {
-	box-sizing: inherit;
+	box-sizing: border-box;
 }
 
 a {
@@ -51,7 +51,14 @@ textarea,
 a {
 	&:focus-visible {
 		outline: 2px solid rgba(255, 255, 255, 0.6);
+		border-radius: 4px; // for :focus-visible - outline styles
 	}
+}
+
+// user agent stylesheet bgColor & color autofill disable
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+	transition: background-color 600000s 0s, color 600000s 0s;
 }
 
 button {
@@ -83,6 +90,22 @@ body {
 	user-select: none;
 }
 
+.button {
+	@extend %decorated-text;
+	padding: .8em 2.1em;
+	border: 2px solid $primaryColor;
+	// border-radius: 30px;
+	border-radius: 4px;
+	font-family: 'Maven Pro', sans-serif;
+	box-shadow: 0 10px 10px -8px rgb(0 0 0 / 78%);
+	text-transform: uppercase;
+	color: $primaryTextColor;
+	background-color: transparent;
+}
+.button:hover {
+	// background-color: lighten($primaryColor, 1%);
+	background-color: rgba($primaryColor, .2);
+}
 
 
 .hidden-stub {
