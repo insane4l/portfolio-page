@@ -1,0 +1,79 @@
+@import '../../../../sassStyles/variables';
+
+.contact-form {
+    width: 100%;
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 2222;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100px;
+        height: 2px;
+        color: $primaryColor;
+    }
+    &__list {
+        display: grid; 
+        gap: 10px; 
+        grid-template-areas: 
+            "name email"
+            "subject subject"
+            "message message"
+            "btn btn"; 
+        width: 100%;
+        .contact-form {
+            &__name {
+                grid-area: name;
+            }
+            &__email {
+                grid-area: email;
+            }
+            &__subject {
+                grid-area: subject;
+            }
+            &__message {
+                grid-area: message;
+                textarea {
+                    height: 200px;
+                    resize: none;
+                    background-color: $secondaryBgColorLight;
+                }
+            }
+            &__btn {
+                grid-area: btn;
+                button {
+                    display: block;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+
+
+    input, textarea {
+        @extend %descr-text;
+        position: relative;
+        display: block;
+        width: 100%;
+        padding: 15px;
+        border-radius: 4px;
+        background: $secondaryBgColorLight;
+        &:focus-visible { // todo: fix (not working)
+            outline: none;
+            &::after {
+                content: '';
+                position: absolute;
+                z-index: 22;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: block;
+                width: 100px;
+                height: 2px;
+                color: $primaryColor;
+            }
+        }
+    }
+}
