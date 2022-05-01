@@ -1,0 +1,117 @@
+@import '../../../sassStyles/variables';
+
+$maxElementsCount: 150; // the maximum number of elements used in the FlyingElementsBg component in the project
+$elementColor: $primaryColor;
+// $elementColor: #ffffff;
+$fadeingElementsPercentage: 30;
+
+.overlay {
+	position: absolute;
+    z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: transparent;
+
+	.el__wrapper {
+		position: absolute;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		// width: 22px;
+		// height: 22px;
+		@for $i from 1 through $maxElementsCount {
+			&-#{$i} {
+				top: random(100) * 1%;
+				left: random(100) * 1%;
+				animation: flying (random(50)+20)+s ease-in-out (random(100)/-10)+s infinite alternate; 
+			}
+		}
+	}
+
+	// .el__wrapper:hover .el{
+	// 	background: $primaryColor;
+	// 	box-shadow: 3px 3px 10px 10px red;
+	// }
+
+	
+	.el {
+		width: 0px;
+		height: 0px;
+		// width: 1px;
+		// height: 1px;
+		// border-radius: 50%;
+		// background-color: $elementColor;
+		@for $i from 1 through (($maxElementsCount / 100) * $fadeingElementsPercentage) {
+			&-#{$i} {
+				transform-origin: (random(30)-15)+px (random(30)-15)+px;
+				animation: rotating (random(20)+10)+s ease-in-out (random(100)/-10)+s infinite;
+			}
+		}
+
+		@for $i from 1 through $maxElementsCount {
+			&-#{$i} {
+				box-shadow: 0px 0px (random(30)+6)+px (random(10)+3)+px $elementColor;
+			}
+		}	
+
+	}
+
+}
+
+@keyframes rotating {
+	0% {
+		opacity: 0;
+		transform: rotate(0deg);
+	}
+	25% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	75% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes flying {
+	0% {
+		transform: translate(0, 0);
+	}
+	10% {
+		transform: translate(20px, 50px);
+	}
+	20% {
+		transform: translate(-30px, 10px);
+	}
+	30% {
+		transform: translate(10px, 60px);
+	}
+	40% {
+		transform: translate(50px, 00px);
+	}
+	50% {
+		transform: translate(-10px, -40px);
+	}
+	60% {
+		transform: translate(-40px, 20px);
+	}
+	70% {
+		transform: translate(30px, -30px);
+	}
+	80% {
+		transform: translate(0px, -60px);
+	}
+	90% {
+		transform: translate(40px, 10px);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
