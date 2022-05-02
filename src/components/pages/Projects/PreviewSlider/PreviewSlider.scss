@@ -4,16 +4,43 @@
     position: relative;
     width: 690px;
     height: 150px;
-    padding: 0 30px;
+    padding: 0 40px;
     &__item {
         width: auto;
         height: 150px;
+        border-radius: 4px;
         overflow: hidden;
         cursor: pointer;
         img {
             min-height: 100%;
             max-width: 100%;
             object-fit: cover;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            // border-bottom: 3px solid rgba(255,255,255, .3);
+            // border-left: 3px solid rgba(255,255,255, .3);
+            // border-right: 3px solid rgba(255,255,255, .3);
+            border-radius: 4px;
+            background-color: rgba(0,0,0, .6);
+            transition: .3s all;
+        }
+        &:hover {
+            &::after {
+                top: -15%;
+            }
+                
+        }
+    }
+    &__item.preview-slider__item_active {
+        &::after {
+            // top: -90%;
+            top: -100%;
         }
     }
 }
@@ -23,10 +50,12 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 30px;
+    width: 35px;
     cursor: pointer;
+    transition: .6s all;
     &:hover {
-        background-color: rgba($primaryColor, .04);
+        background-color: rgba($primaryTextColor, .06);
+        border-radius: 4px;
         &::after {
             width: 12px;
             height: 12px;
@@ -35,7 +64,7 @@
     &::after {
         content: '';
         position: absolute;
-        bottom: 0;
+        top: calc(50% - 5.5px);
         width: 11px;
         height: 11px;
         border-bottom: 2px solid $primaryColor;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import mockupImg from '../../../../assets/images/project_mockup.jpg'
+import mockupImg from '../../../../assets/images/projectsImgs/project_mockup.jpg'
 import { FullScreenImg } from '../../../common/FullScreenImg/FullScreenImg';
 import { projectDescrIcons } from '../../../../assets/icons/icons';
 import './ProjectCardV2.scss'

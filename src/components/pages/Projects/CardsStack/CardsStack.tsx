@@ -11,7 +11,7 @@ export const CardsStack: React.FC<CardsStackPropsType> = ({selectedCard, onCardI
         <div className="cards-stack">
 
             <TransitionGroup component={null}>
-                <CSSTransition key={selectedCard.title} timeout={1000} classNames="card-stack-item">
+                <CSSTransition key={selectedCard.title} timeout={600} classNames="card-stack-item">
                     <ProjectCard project={selectedCard} onImageClick={onCardImageClick} />
                 </CSSTransition>
             </TransitionGroup>

@@ -1,13 +1,11 @@
 import React, { useRef } from 'react'
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { Pagination, A11y, Autoplay } from 'swiper';
+import { A11y, Autoplay } from 'swiper';
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { ProjectItemType } from '../ProjectsPage';
 import './PreviewSlider.scss'
 
-export const PreviewSlider: React.FC<PreviewSliderPropsType> = ({cards, selectCard}) => {
+export const PreviewSlider: React.FC<PreviewSliderPropsType> = ({cards, selectCard, selectedCardId}) => {
     const swiperRef = useRef();
     
     const showNextSlides = () => {
@@ -22,15 +20,17 @@ export const PreviewSlider: React.FC<PreviewSliderPropsType> = ({cards, selectCa
     return (
         <div className="preview-slider">
             <Swiper
-                modules={[Pagination, Autoplay, A11y]}
+                modules={[Autoplay, A11y]}
                 spaceBetween={20}
                 slidesPerView={3}
-                // loop
+                loop
                 allowTouchMove={false}
-                autoplay={{delay: 3000}}
-                pagination={{ clickable: true }}
-                onSlideChange={() => console.log('slide change')}
+                autoplay={{delay: 3000, pauseOnMouseEnter: true, disableOnInteraction: false}}
+                // keyboard={{enabled: true}}
+                // onKeyPress={(swiper: any, keyCode: any) => console.log(keyCode)}
+                // onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => {
+                    // console.log(swiper);
                     //@ts-ignore
                     swiperRef.current = swiper
                 }}
@@ -41,9 +41,15 @@ export const PreviewSlider: React.FC<PreviewSliderPropsType> = ({cards, selectCa
                         const onCardSelected = () => {
                             selectCard(card)
                         }
+
+                        const cardCN = card.id === selectedCardId 
+                            ? "preview-slider__item preview-slider__item_active" 
+                            : "preview-slider__item"
+
                         return (
                             <SwiperSlide>
-                                <div onClick={onCardSelected} className="preview-slider__item">
+                                {/* todo: create project title */}
+                                <div onClick={onCardSelected} className={cardCN}> 
                                     <img src={card.previewImage} alt="project preview img" />
                                 </div>
                             </SwiperSlide>
@@ -52,9 +58,9 @@ export const PreviewSlider: React.FC<PreviewSliderPropsType> = ({cards, selectCa
                 }
                 
             </Swiper>
-
-            <div onClick={showPrevSlides} className="swiper-prev-arrow"></div>
-            <div onClick={showNextSlides} className="swiper-next-arrow"></div>
+            
+            <button onClick={showPrevSlides} className="swiper-prev-arrow"></button>
+            <button onClick={showNextSlides} className="swiper-next-arrow"></button>
         </div>
     )
 }
@@ -62,5 +68,6 @@ export const PreviewSlider: React.FC<PreviewSliderPropsType> = ({cards, selectCa
 
 type PreviewSliderPropsType = {
     cards: Array<ProjectItemType>
+    selectedCardId: number
     selectCard: (card: ProjectItemType) => void
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection';
 import './ProjectsPage.scss'
-import mockupImg from '../../../assets/images/project_mockup.jpg'
+import mockupImg from '../../../assets/images/projectsImgs/project_mockup.jpg'
+import previewExample from '../../../assets/images/projectsImgs/sn_example.png'
 import { FullScreenImg } from '../../common/FullScreenImg/FullScreenImg';
 import { PreviewSlider } from './PreviewSlider/PreviewSlider';
 import { CardsSlider } from './CardsSlider/CardsSlider';
@@ -10,6 +11,7 @@ import { useMediaQuery } from 'react-responsive'
 
 
 export type ProjectItemType = {
+    id: number
     previewImage: string
     mockupImage: string
     title: string
@@ -21,7 +23,8 @@ export type ProjectItemType = {
 
 const projects: Array<ProjectItemType> = [
     {
-        previewImage: mockupImg,
+        id: 1,
+        previewImage: previewExample,
         mockupImage: mockupImg,
         title: 'Social Network',
         description: 'Social Network with authorization, users, developers chat etc.. fdasfjdsfjn sdfajjndsafj askas fdjsakfkas dafka jkfdsalfa kfdajf alsdfkasdfj  jfdsakfkdlasf  fdsakjfasd',
@@ -30,7 +33,8 @@ const projects: Array<ProjectItemType> = [
         demoPageLink: 'https://www.github.com',
     },
     {
-        previewImage: mockupImg,
+        id: 2,
+        previewImage: previewExample,
         mockupImage: mockupImg,
         title: 'Todo Lists',
         description: 'lorem loasdfhjhk asdhj klfhjklsd hjkafhjkl sdhajklfhjklhjkasdfhjk',
@@ -39,7 +43,8 @@ const projects: Array<ProjectItemType> = [
         demoPageLink: 'https://www.github.com',
     },
     {
-        previewImage: mockupImg,
+        id: 3,
+        previewImage: previewExample,
         mockupImage: mockupImg,
         title: 'test3',
         description: 'lofdasdfasdfhjhk asdhj kasdfjkafhjkl sdhajklfhjklhjkasdfhjk',
@@ -48,7 +53,8 @@ const projects: Array<ProjectItemType> = [
         demoPageLink: 'https://www.github.com',
     },
     {
-        previewImage: mockupImg,
+        id: 4,
+        previewImage: previewExample,
         mockupImage: mockupImg,
         title: 'test444',
         description: 'lofdasdfasdfhjfasdfasdfasddhajklfhjklhjkasdfhjk',
@@ -78,14 +84,14 @@ export const ProjectsPage = () => {
         <AnimatedSection preloaderDuration={preloaderDuration}>
             <div className="projects-section">
 
-                <div>
+                <div className="projects-section_left-box">
                     <h2 className="section-title projects-section__title">Portfolio</h2>
                     My last projects:
                     Here are some of my latest projects:
 
                     {isSmallerThanLgBreakPoint
                         ? <CardsSlider cards={projects} />
-                        : <PreviewSlider cards={projects} selectCard={setSelectedCard} />
+                        : <PreviewSlider cards={projects} selectedCardId={selectedCard.id} selectCard={setSelectedCard} />
                     }
                 </div>
 

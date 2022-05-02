@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import './Contacts.scss'
-import { contactIcons } from '../../../assets/icons/icons'
+import { contactIcons } from '../../assets/icons/icons'
 
 const contactsList = [
     {label: "linkedin icon", icon: contactIcons.linkedinIcon, href: "https://www.linkedin.com/in/insane4l/"},
