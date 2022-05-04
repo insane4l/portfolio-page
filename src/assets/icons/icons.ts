@@ -51,6 +51,21 @@ import githubIcon from './contacts/github.svg';
 import instagramIcon from './contacts/instagram.svg';
 import telegramIcon from './contacts/telegram.svg';
 
+
+// Tech icons
+import react from './techLogos/react.svg';
+import redux from './techLogos/redux.svg';
+import html from './techLogos/html5.svg';
+import css from './techLogos/css3.svg';
+import js from './techLogos/javascript.svg';
+import jest from './techLogos/jest.svg';
+import sass from './techLogos/sass.svg';
+
+export const techLogos = [
+    react, redux, html, css, js, jest, sass
+]
+
+
 export const projectDescrIcons = {
     fullscreenIcon, projectDemoLinkIcon, projectGithubLinkIcon
 }
