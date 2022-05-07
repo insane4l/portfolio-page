@@ -1,23 +1,25 @@
 import React, { useRef } from 'react'
 import './ContactForm.scss'
 import emailjs from '@emailjs/browser'
+import { SuperAlertVariantType } from '../../../common/SuperAlert/SuperAlert'
 
-export const ContactForm = () => {
+// todo: need some optimization, refactoring
+export const ContactForm: React.FC<ContactFormPropsType> = ({setSubmitResultMessage}) => {
 
-    const formRef = useRef(null)
-
+    const formRef = useRef<HTMLFormElement>(null)
+    
     const sendMessage = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        debugger;
+
         emailjs
             .sendForm('default_service', 'template_k1qu6or', formRef.current!, 'csNtTFWaWTouVadq5')
             .then(() => {
-                alert('Message sent')
-                // window.location.reload()
-                }
-            )
+                // alert('Message sent')
+                setSubmitResultMessage && setSubmitResultMessage('success' , 'Thank you! Your message has been sent')
+                formRef.current!.reset()
+            })
             .catch(() => {
-                debugger;
+                setSubmitResultMessage && setSubmitResultMessage('error' , 'Failed to send your message. Please try later or contact me directly roman.karpeyev@gmail.com')
             })
     }
 
@@ -26,20 +28,20 @@ export const ContactForm = () => {
             <ul className="contact-form__list">
                 <li className="contact-form__name">
                     <input type="text" autoComplete="off" placeholder="Your Name" name="name" />
-                    <label htmlFor=""></label>
+                    <label></label>
                 </li>
                 <li className="contact-form__email">
                     <input type="email" autoComplete="on" placeholder="Your Email" name="email" />
-                    <label htmlFor=""></label>
+                    <label></label>
                 </li>
                 
                 <li className="contact-form__subject">
                     <input type="text" autoComplete="off" placeholder="Subject" name="subject" />
-                    <label htmlFor=""></label>
+                    <label></label>
                 </li>
                 <li className="contact-form__message">
                     <textarea placeholder="Message" name="message" />
-                    <label htmlFor=""></label>
+                    <label></label>
                 </li>
                 <li className="contact-form__btn">
                     <button className="button">Send message</button>
@@ -47,4 +49,9 @@ export const ContactForm = () => {
             </ul>
         </form>
     )
+}
+
+
+type ContactFormPropsType = {
+    setSubmitResultMessage?: (status: SuperAlertVariantType, message: string) => void
 }

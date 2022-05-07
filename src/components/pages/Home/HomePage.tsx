@@ -2,9 +2,10 @@ import React, { useEffect, useMemo } from 'react'
 import { NavLink } from 'react-router-dom'
 import { TextSlider } from '../../common/TextSlider/TextSlider'
 import './HomePage.scss'
-import image_stub from '../../../assets/images/temporary_low_q_png.png'
+import image_stub from '../../../assets/images/photo_low_quality.png'
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection'
 import { FlyingElementsBg } from '../../common/FlyingElementsBg/FlyingElementsBg'
+import myCV from '../../../assets/myCV.pdf'
 
 
 export const HomePage = () => {
@@ -41,7 +42,7 @@ export const HomePage = () => {
                     </h2>
 
                     <div className="home-section__buttons">
-                        <a className="button home-section__btn" href="">Download CV</a>
+                        <a className="button home-section__btn" href={myCV} download="Roman Karpeyev CV">Download CV</a>
                         <NavLink className="button home-section__btn" to="/contact/" >Contact me</NavLink>
                     </div>
                 </div>

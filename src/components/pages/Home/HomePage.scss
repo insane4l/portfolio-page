@@ -43,6 +43,7 @@
     &__buttons {
         display: flex;
         gap: 22px;
+        transform: translateX(-40px);
     }
     &__btn {
         
@@ -78,11 +79,11 @@
     color: $primaryColor;
     // background-color: $primaryColor;
     // color: #fff;
-    animation: fadeInOut;
+    animation: fadeInOutDown;
     // animation-direction: alternate;
 }
 
-@keyframes fadeInOut {
+@keyframes fadeInOutDown {
     0% {
         transform: translateY(-10px);
         opacity: 0;

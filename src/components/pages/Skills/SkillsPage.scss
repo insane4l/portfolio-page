@@ -1,0 +1,40 @@
+@import '../../../sassStyles/variables';
+
+.skills-section {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    &-box_left {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 33px;
+        width: calc(100% - 40px);
+        margin: 25px 0 55px 0;
+    }
+    &__li {
+        display: inline-flex;
+        justify-content: flex-start;
+    }
+    &__li-title {
+        @extend %title-text;
+        color: $primaryColor;
+        justify-content: flex-start;
+        padding: 0 0 20px 0;
+        // border-bottom: 1px solid rgba(255,255,255, .1);
+        border-bottom: 1px solid rgba($primaryColor, .1);
+    }
+    &__li-descr {
+        justify-content: flex-start;
+        margin-top: 10px;
+        .item-list-string {
+            letter-spacing: 0.08rem;
+            text-transform: uppercase;
+        }
+    }
+}

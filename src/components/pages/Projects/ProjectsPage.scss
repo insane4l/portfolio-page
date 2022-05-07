@@ -2,11 +2,30 @@
 
 .projects-section {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
-    &_left-box {
+
+    &-box {
+        display: flex;
+        align-items: end;
+        gap: 55px;
+        margin-bottom: 50px;
+        &_left {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+    }
+    &__title {
         
+    }
+    &__descr {
+        @extend %descr-text;
+        margin-bottom: 160px;
+    }
+    &__cards {
+
     }
 }

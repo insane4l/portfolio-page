@@ -1,0 +1,15 @@
+@import '../../../sassStyles/variables';
+
+.item-list-string {
+    @extend %decorated-text;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.item-list-elem {
+    
+}
+.item-list-decorator {
+    color: $primaryColor;
+}

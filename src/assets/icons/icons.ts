@@ -60,9 +60,14 @@ import css from './techLogos/css3.svg';
 import js from './techLogos/javascript.svg';
 import jest from './techLogos/jest.svg';
 import sass from './techLogos/sass.svg';
+import git from './techLogos/git.svg';
+import mui from './techLogos/mui.svg';
+import typescript from './techLogos/typescript.svg';
+import vstudio from './techLogos/vstudio.svg';
+import yarn from './techLogos/yarn.svg';
 
 export const techLogos = [
-    react, redux, html, css, js, jest, sass
+    react, redux, html, css, js, jest, sass, git, mui, typescript, vstudio, yarn,
 ]
 
 

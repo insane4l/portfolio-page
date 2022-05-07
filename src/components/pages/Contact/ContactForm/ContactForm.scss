@@ -23,6 +23,9 @@
             "message message"
             "btn btn"; 
         width: 100%;
+        li {
+            position: relative;
+        }
         .contact-form {
             &__name {
                 grid-area: name;
@@ -60,20 +63,30 @@
         padding: 15px;
         border-radius: 4px;
         background: $secondaryBgColorLight;
-        &:focus-visible { // todo: fix (not working)
+        &:focus-visible {
             outline: none;
-            &::after {
-                content: '';
-                position: absolute;
-                z-index: 22;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                display: block;
-                width: 100px;
-                height: 2px;
-                color: $primaryColor;
-            }
         }
     }
+
+
+
+
+
+    input + label, textarea + label {
+        display: block;
+        position: absolute;
+        z-index: 22;
+        left: 2px;
+        bottom: 1px;
+        width: 0;
+        height: 2px;
+        border-radius: 2px;
+        background-color: $primaryColor;
+        transition: .6s width ease;
+    }
+    input:focus + label, textarea:focus + label {
+        width: calc(100% - 4px);
+    }
 }
+
+

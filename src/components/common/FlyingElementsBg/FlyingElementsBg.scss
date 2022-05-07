@@ -13,7 +13,7 @@ $fadeingElementsPercentage: 30;
 	right: 0;
 	bottom: 0;
 	background: transparent;
-
+	pointer-events: none;
 	.el__wrapper {
 		position: absolute;
 		display: flex;

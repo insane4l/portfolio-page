@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection';
 import './ProjectsPage.scss'
-import mockupImg from '../../../assets/images/projectsImgs/project_mockup.jpg'
-import previewExample from '../../../assets/images/projectsImgs/sn_example.png'
+import mockupStub from '../../../assets/images/projectsImgs/mockup_stub.jpg'
+import previewStub from '../../../assets/images/projectsImgs/preview_stub.png'
 import { FullScreenImg } from '../../common/FullScreenImg/FullScreenImg';
 import { PreviewSlider } from './PreviewSlider/PreviewSlider';
 import { CardsSlider } from './CardsSlider/CardsSlider';
 import { CardsStack } from './CardsStack/CardsStack';
 import { useMediaQuery } from 'react-responsive'
+import snPreview from '../../../assets/images/projectsImgs/sn_preview.png'
+import snMockup from '../../../assets/images/projectsImgs/sn_mockup.jpg'
 
 
 export type ProjectItemType = {
@@ -24,18 +26,18 @@ export type ProjectItemType = {
 const projects: Array<ProjectItemType> = [
     {
         id: 1,
-        previewImage: previewExample,
-        mockupImage: mockupImg,
+        previewImage: snPreview,
+        mockupImage: snMockup,
         title: 'Social Network',
-        description: 'Social Network with authorization, users, developers chat etc.. fdasfjdsfjn sdfajjndsafj askas fdjsakfkas dafka jkfdsalfa kfdajf alsdfkasdfj  jfdsakfkdlasf  fdsakjfasd',
-        technologies: ['React.js', 'Redux', 'SCSS', 'REST API', 'WebSocket API',],
-        sourceCodeLink: 'https://www.github.com',
-        demoPageLink: 'https://www.github.com',
+        description: 'Social Network with authorization, users, developers chat etc.. lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1 lorem1',
+        technologies: ['React.js', 'Redux', 'SCSS', 'REST API', 'WebSocket',],
+        sourceCodeLink: 'https://github.com/insane4l/React-Practice-Dimych-socialNetwork',
+        demoPageLink: 'https://insane4l.github.io/React-Practice-Dimych-socialNetwork',
     },
-    {
+    { 
         id: 2,
-        previewImage: previewExample,
-        mockupImage: mockupImg,
+        previewImage: previewStub,
+        mockupImage: mockupStub,
         title: 'Todo Lists',
         description: 'lorem loasdfhjhk asdhj klfhjklsd hjkafhjkl sdhajklfhjklhjkasdfhjk',
         technologies: ['React.js', 'Redux', 'Material UI', 'REST API'],
@@ -44,8 +46,8 @@ const projects: Array<ProjectItemType> = [
     },
     {
         id: 3,
-        previewImage: previewExample,
-        mockupImage: mockupImg,
+        previewImage: previewStub,
+        mockupImage: mockupStub,
         title: 'test3',
         description: 'lofdasdfasdfhjhk asdhj kasdfjkafhjkl sdhajklfhjklhjkasdfhjk',
         technologies: ['React.js', 'Redux', 'REST API'],
@@ -54,8 +56,8 @@ const projects: Array<ProjectItemType> = [
     },
     {
         id: 4,
-        previewImage: previewExample,
-        mockupImage: mockupImg,
+        previewImage: previewStub,
+        mockupImage: mockupStub,
         title: 'test444',
         description: 'lofdasdfasdfhjfasdfasdfasddhajklfhjklhjkasdfhjk',
         technologies: ['React.js'],
@@ -84,19 +86,27 @@ export const ProjectsPage = () => {
         <AnimatedSection preloaderDuration={preloaderDuration}>
             <div className="projects-section">
 
-                <div className="projects-section_left-box">
-                    <h2 className="section-title projects-section__title">Portfolio</h2>
-                    My last projects:
-                    Here are some of my latest projects:
+                <div className="projects-section-box">
+                    <div className="projects-section-box_left">
+                        <h2 className="section-title projects-section__title">Portfolio</h2>
+                        <p className="projects-section__descr">Here are some of my projects:</p>                    
+                        {!isSmallerThanLgBreakPoint 
+                            && <PreviewSlider cards={projects} selectedCardId={selectedCard.id} selectCard={setSelectedCard} />
+                        }
+                    </div>
 
-                    {isSmallerThanLgBreakPoint
-                        ? <CardsSlider cards={projects} />
-                        : <PreviewSlider cards={projects} selectedCardId={selectedCard.id} selectCard={setSelectedCard} />
-                    }
-                </div>
+                    <div className="projects-section__cards">
+                        {isSmallerThanLgBreakPoint
+                            ? <CardsSlider cards={projects} />
+                            : <CardsStack selectedCard={selectedCard} onCardImageClick={showFullSizeImage}/>
+                        }
+                    </div>
+                {/* </div>
 
-                <div>
-                    {!isSmallerThanLgBreakPoint && <CardsStack selectedCard={selectedCard} onCardImageClick={showFullSizeImage}/>}
+                <div className="projects-section_right-box"> */}
+                    
+                    {/* {!isSmallerThanLgBreakPoint && <CardsStack selectedCard={selectedCard} onCardImageClick={showFullSizeImage}/>} */}
+
                 </div>
 
 

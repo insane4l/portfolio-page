@@ -10,7 +10,7 @@ export const FlyingElementsBg: React.FC<FlyingElementsBgPropsType> = React.memo(
 
     const mappedDots = dots.map(elNum => {
         return (
-            <div className={`el__wrapper el__wrapper-${elNum}`}>
+            <div key={elNum} className={`el__wrapper el__wrapper-${elNum}`}>
                 <div className={`el el-${elNum}`}></div>
             </div>
         )

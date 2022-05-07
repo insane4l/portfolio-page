@@ -47,9 +47,9 @@ export const PreviewSlider: React.FC<PreviewSliderPropsType> = ({cards, selectCa
                             : "preview-slider__item"
 
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide key={card.id}>
                                 {/* todo: create project title */}
-                                <div onClick={onCardSelected} className={cardCN}> 
+                                <div onClick={onCardSelected} className={cardCN}>
                                     <img src={card.previewImage} alt="project preview img" />
                                 </div>
                             </SwiperSlide>

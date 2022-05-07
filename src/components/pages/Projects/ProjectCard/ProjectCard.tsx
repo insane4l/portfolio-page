@@ -1,5 +1,6 @@
 import React from 'react'
 import { projectDescrIcons } from '../../../../assets/icons/icons';
+import { ItemListString } from '../../../common/ItemListString/ItemListString';
 import { ProjectItemType } from '../ProjectsPage';
 import './ProjectCard.scss'
 
@@ -7,12 +8,6 @@ import './ProjectCard.scss'
 // full size image will be out of slider wrappers
 export const ProjectCard: React.FC<ProjectCardPropsType> = ({project, onImageClick}) => {
     const {mockupImage, title, description, technologies, sourceCodeLink, demoPageLink} = project
-
-    const mappedTechnologies = technologies.map((el, indx, arr) => {
-        return indx === (arr.length - 1)
-            ? <>{el}</>
-            : <>{el} <span> ▸ </span></>
-    })
 
     return (
         <>
@@ -22,22 +17,28 @@ export const ProjectCard: React.FC<ProjectCardPropsType> = ({project, onImageCli
                 </div>
                 
                 <div className="project__card-info">
-                    <div className="project__card-title">
-                        {title}
+                    <div>
+                        <div className="project__card-title">
+                            {title}
+                        </div>
+                        <div className="project__card-descr">
+                            {description}
+                        </div>
                     </div>
                     
-                    <div className="project__card-descr">
-                        {description}
-                    </div>
-                   
-                    <div className="project__card-technologies">
-                        {mappedTechnologies}
-                    </div>
-                    {/* <button className="button project__card-btn">Watch Demo</button> */}
+                    <div>
+                        <ItemListString className="project__card-technologies" items={technologies} />
+                        {/* <button className="button project__card-btn">Watch Demo</button> */}
 
-                    <div className="project__card-links">
-                        <a className="project__card-link" href={sourceCodeLink}><img src={projectDescrIcons.projectGithubLinkIcon} alt="watch on github" /></a>
-                        <a className="project__card-link" href={demoPageLink}><img src={projectDescrIcons.projectDemoLinkIcon} alt="watch demo" /></a>
+                        <div className="project__card-links">
+                            <a className="project__card-link" href={sourceCodeLink} target="_blank" rel="noreferrer">
+                                <img src={projectDescrIcons.projectGithubLinkIcon} alt="watch on github" />
+                            </a>
+
+                            <a className="project__card-link" href={demoPageLink} target="_blank" rel="noreferrer">
+                                <img src={projectDescrIcons.projectDemoLinkIcon} alt="watch demo" />
+                            </a>
+                        </div>
                     </div>
                     
                 </div>

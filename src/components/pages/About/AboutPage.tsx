@@ -16,7 +16,7 @@ export const AboutPage = () => {
             <div className="about-section">
                 <FlyingElementsBg />
 
-                <div>
+                <div className="about-section-box_left">
                     <h2 className="section-title about-section__title">About me</h2>
                     <p className="about-section__descr">
                         <span>

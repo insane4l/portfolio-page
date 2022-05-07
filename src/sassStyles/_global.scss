@@ -37,6 +37,10 @@ h6 {
 	font-size: inherit;
 }
 
+p {
+	margin: 0;
+}
+
 button,
 input,
 textarea {
@@ -79,16 +83,13 @@ body {
 	background-color: $primaryBgColor;
 }
 
-.section-descr-block {
-	@extend %descr-text;
-	position: absolute;
-	top: 20%;
-	left: 0;
-}
+
 .section-title {
 	@extend %section-title;
 	-webkit-user-drag: none;
 	user-select: none;
+	margin-bottom: 30px;
+	transform: translateX(-40px);
 }
 
 .button {
@@ -102,6 +103,7 @@ body {
 	text-transform: uppercase;
 	color: $primaryTextColor;
 	background-color: transparent;
+	user-select: none;
 }
 .button:hover {
 	// background-color: lighten($primaryColor, 1%);

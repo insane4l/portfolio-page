@@ -1,0 +1,31 @@
+@import '../../../../sassStyles/variables';
+
+
+.cards-slider {
+    width: 400px;
+    height: 495px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-touch-callout: none;
+    .project__card-mockup:hover {
+        &::after {
+            display: none;
+        }
+        img {
+            transform: scale(1);
+        }
+    }
+    .project__card-mockup::after {
+        display: none;
+    }
+
+
+
+    .swiper-pagination-bullet {
+        // background-color: $primaryColor;
+        background-color: #fff;
+    }
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        background-color: $primaryColor;
+    }
+}

@@ -2,16 +2,15 @@
 
 
 .project__card {
-    // max-width: 400px;
     width: 400px;
-    height: 495px;
+    height: 495px; // todo: need to fix?
     border-radius: 6px;
     overflow: hidden;
     background-color: $secondaryBgColor;
     &-mockup {
         position: relative;
         width: 100%;
-        height: 220px;
+        height: 45%;
         overflow: hidden;
         cursor: pointer;
         &::after {
@@ -45,9 +44,12 @@
         }
     }
     &-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         position: relative;
         width: 100%;
-        height: 100%;
+        height: 55%;
         padding: 30px 30px 25px 30px; 
         // padding: 45px 40px 45px 40px; // with after & before decorators
         background-color: $secondaryBgColor;
@@ -76,6 +78,8 @@
     &-descr {
         @extend %descr-text;
         margin-top: 20px;
+        height: 90px; // todo: need to fix
+        overflow: hidden; //
         // min-height: 90px; // todo: need some styles if descr length not the same (there is a lot of empty space)
                             // technologes with links or links only may be position bottom: 0 ???
         // margin-top: 30px; // with after & before decorators
@@ -84,14 +88,8 @@
         // padding: 10px 25px;
     }
     &-technologies {
-        @extend %decorated-text;
-        display: flex;
-        justify-content: space-between;
         margin-top: 22px;
         // margin-top: 30px; // with after & before decorators
-        span {
-            color: $primaryColor;
-        }
     }
     &-btn {
         display: block;
