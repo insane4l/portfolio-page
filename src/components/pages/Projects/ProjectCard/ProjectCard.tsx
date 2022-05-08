@@ -26,7 +26,7 @@ export const ProjectCard: React.FC<ProjectCardPropsType> = ({project, onImageCli
                         </div>
                     </div>
                     
-                    <div>
+                    <div className="project__card-footer">
                         <ItemListString className="project__card-technologies" items={technologies} />
                         {/* <button className="button project__card-btn">Watch Demo</button> */}
 

@@ -1,4 +1,5 @@
 @import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
 
 .preloader {
     &__overlay {
@@ -60,5 +61,25 @@
     }
     100% {
         width: 100%;
+    }
+}
+
+
+
+
+
+// media queries
+.preloader {
+    &__overlay {
+        @include smMaxBreakPoint {
+            align-items: flex-start;
+            // height: calc(100vh - 115px);
+        }
+    }
+    &__wrapper {
+        @include smMaxBreakPoint {
+            margin-top: 200px;
+            width: 300px;
+        }
     }
 }

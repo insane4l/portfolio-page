@@ -6,24 +6,22 @@ import image_stub from '../../../assets/images/photo_low_quality.png'
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection'
 import { FlyingElementsBg } from '../../common/FlyingElementsBg/FlyingElementsBg'
 import myCV from '../../../assets/myCV.pdf'
+import { useMediaQuery } from 'react-responsive'
 
 
 export const HomePage = () => {
     const preloaderDuration = 1100;
 
+    const isLargeScreen = useMediaQuery({ query: `(min-width: 880px)`})
+
     const roles = useMemo(() => ['Husband', 'Father', 'Developer'], [])
-
-    useEffect(() => {
-        setInterval(() => {
-
-        }, 2222)
-    }, [])
-
+    const bgFlyingElementsCount = isLargeScreen ? 130 : 80
+    
 
     return (
         <AnimatedSection preloaderDuration={preloaderDuration}>
             <div className="home-section">
-                <FlyingElementsBg />
+                <FlyingElementsBg elCount={bgFlyingElementsCount} />
 
                 <div className="home-section__welcome-block">
                     <h2 className="section-title home-section__title">
@@ -47,9 +45,11 @@ export const HomePage = () => {
                     </div>
                 </div>
 
-                <div className="home-section__image">
-                    <img src={image_stub} alt="" />
-                </div>
+                {isLargeScreen && 
+                    <div className="home-section__image">
+                        <img src={image_stub} alt="" />
+                    </div>
+                }
             </div>
 
         </AnimatedSection>

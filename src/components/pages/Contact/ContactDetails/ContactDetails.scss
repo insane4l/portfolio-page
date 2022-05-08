@@ -1,4 +1,5 @@
 @import '../../../../sassStyles/variables';
+@import '../../../../sassStyles/mixins';
 
 .contact-details {
     @extend %descr-text;
@@ -34,5 +35,31 @@
             transform: rotate(0);
             filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(303deg) brightness(102%) contrast(102%);
         }
+    }
+}
+
+
+
+
+
+
+
+
+// media queries
+.contact-details {
+    @include customMaxBreakPoint(880px) {
+        top: 8px;
+    }
+    @include mdMaxBreakPoint {
+        left: 40px;
+        padding: 10px;
+    }
+    @include smMaxBreakPoint {
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, -110%);
+    }
+    @include smMaxBreakPoint {
+        padding: 20px;
     }
 }

@@ -1,4 +1,5 @@
 @import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
 
 .skills-section {
     display: flex;
@@ -35,6 +36,61 @@
         .item-list-string {
             letter-spacing: 0.08rem;
             text-transform: uppercase;
+        }
+    }
+}
+
+
+
+
+
+// media queries
+.skills-section {
+    @include customMaxBreakPoint(880px) {
+        display: block;
+        text-align: center;
+    }
+    @include smMaxBreakPoint {
+        min-height: calc(100vh - 115px);
+    }
+    &-box_left {
+        @include customMaxBreakPoint(880px) {
+            width: 90%;
+            padding-top: 30px;
+            text-align: center;
+        }
+    }
+    &__list {
+        @include customMaxBreakPoint(880px) {
+            gap: 50px;
+        }
+    }
+    &__li, &__li-title, &__li-descr {
+        @include customMaxBreakPoint(880px) {
+            justify-content: center;
+        }
+    }
+    &__li {
+        .item-list-string {
+            @include smMaxBreakPoint {
+                justify-content: center;
+            }
+        }
+    }
+    &__li-title {
+        @include customMaxBreakPoint(880px) {
+            border: none;
+        }
+    }
+    &__li-descr {
+        @include customMaxBreakPoint(880px) {
+            margin-top: 15px;
+        }
+        @include smMaxBreakPoint {
+            margin-top: 35px;
+        }
+        @include customMaxBreakPoint(370px) {
+            margin-top: 45px;
         }
     }
 }

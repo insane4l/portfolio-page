@@ -1,4 +1,5 @@
 @import '../../sassStyles/variables';
+@import '../../sassStyles/mixins';
 
 .header {
     // position: fixed;
@@ -14,4 +15,24 @@
     height: 100vh;
     padding: 15px 10px;
     background-color: $secondaryBgColor;
+}
+
+
+
+
+
+
+
+// media queries
+.header {
+    @include lgMaxBreakPoint {
+        flex-direction: row;
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+    @include smMaxBreakPoint {
+        flex-direction: column;
+        align-items: start;
+    }
 }

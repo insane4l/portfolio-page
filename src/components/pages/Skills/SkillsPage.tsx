@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useMediaQuery } from 'react-responsive';
 import { v1 } from 'uuid';
 import { techLogos } from '../../../assets/icons/icons';
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection'
@@ -14,6 +15,8 @@ const listsId = [
 export const SkillsPage = () => {
     const preloaderDuration = 1200;
 
+    const isSmallScreen = useMediaQuery({ query: `(max-width: 880px)`})
+
     const [skillSections, setSkillSections] = useState([
         {id: listsId[0], title: ['Languages', ''], uncollapsed: false},
         {id: listsId[1], title: ['Frameworks', '& Libraries'], uncollapsed: false},
@@ -26,6 +29,11 @@ export const SkillsPage = () => {
         [listsId[2]]: ['BEM', 'Git(GitHub)', 'REST API', 'Unit Tests', 'Storybook'],
     }
 
+    useEffect(() => {
+        if (isSmallScreen) {
+            setSkillSections(sections => sections.map(el => ({...el, uncollapsed: true})))
+        }
+    }, [])
     
 
     const mappedSkillSections = skillSections.map(section => {
@@ -43,14 +51,21 @@ export const SkillsPage = () => {
             setSkillSections(changedSections)
         }
 
+        const onTextMouseOver = () => {
+            !isSmallScreen && uncollapseSkillSection()
+        }
+        const onTextMouseLeave = () => {
+            !isSmallScreen && collapseSkillSection()
+        }
+
         return (
             <DoubleTextLine 
                 key={section.id}
                 className="skills-section__li"
                 primaryTextCN="skills-section__li-title"
                 secondaryTextCN="skills-section__li-descr"
-                onMouseLeave={collapseSkillSection}
-                onMouseOver={uncollapseSkillSection}
+                onMouseOver={onTextMouseOver}
+                onMouseLeave={onTextMouseLeave}
                 onClick={toggleCollapseMode}
                 doubleMode={section.uncollapsed}
                 primaryText={section.title}

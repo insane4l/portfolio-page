@@ -1,4 +1,5 @@
 @import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
 
 
 .main-logo {
@@ -45,5 +46,21 @@
     span:nth-child(2) {
         transform: rotate(-90deg) translateX(9%) translateY(-5px);
         
+    }
+}
+
+
+
+
+
+
+
+// media query
+.main-logo {
+    @include lgMaxBreakPoint {
+        margin-left: 40px;
+    }
+    @include smMaxBreakPoint {
+        margin-left: 0;
     }
 }

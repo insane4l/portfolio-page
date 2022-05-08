@@ -1,4 +1,5 @@
 @import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
 
 .home-section {
     // background: url('../../../assets/images/temporary_low_q_png.png');
@@ -95,5 +96,91 @@
     100% {
         transform: translateY(10px);
         opacity: 0;
+    }
+}
+
+
+
+
+
+
+
+
+// media queries
+.home-section {
+    @include smMaxBreakPoint {
+        min-height: calc(100vh - 115px);
+    }
+    &__image {
+        @include xlMaxBreakPoint {
+            width: 50%;
+        }
+        @include lgMaxBreakPoint {
+            width: 43%;
+            height: 90%;
+        }
+        // @include customMaxBreakPoint(880px) { conditional rendering with react-responsive was used
+        //     display: none;
+        // }
+    }
+    &__welcome-block {
+        @include customMaxBreakPoint(880px) {
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            // display: flex;
+            // flex-direction: column;
+            // align-items: center;
+            // width: 100%;
+        }
+        @include smMaxBreakPoint {
+            width: 95%;
+            padding-top: 30px;
+            position: relative;
+        }
+    }
+    &__title {
+        .nickname {
+            @include lgMaxBreakPoint {
+                top: -44px;
+                transform: rotate(15deg);
+                opacity: 1;
+            }
+            @include smMaxBreakPoint {
+                top: 55px;
+            }
+            @include customMaxBreakPoint(480px) {
+                top: 92px;
+                right: -20px;
+                transform: rotate(0);
+            }
+        }
+        &:hover {
+            .nickname {
+                @include smMaxBreakPoint {
+                    top: 55px;
+                }
+                @include customMaxBreakPoint(480px) {
+                    top: 92px;
+                    right: -20px;
+                    transform: rotate(0);
+                }
+            }
+        }
+    }
+    &__buttons {
+        @include customMaxBreakPoint(880px) {
+            transform: translateX(0);
+        }
+        @include customMaxBreakPoint(430px) {
+            flex-direction: column;
+        }
+    }
+    .roles__item {
+        @include customMaxBreakPoint(480px) {
+            display: block;
+            padding: 0;
+        }
     }
 }

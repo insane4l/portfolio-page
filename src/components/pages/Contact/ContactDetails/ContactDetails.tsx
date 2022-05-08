@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive'
 
 export const ContactDetails = () => {
 
-    const isSmallerThanLgBreakPoint = useMediaQuery({ query: `(max-width: 992px)`})
+    const isSmallerThanLgBreakPoint = useMediaQuery({ query: `(max-width: 991px)`})
 
     return (
         <div className="contact-details">

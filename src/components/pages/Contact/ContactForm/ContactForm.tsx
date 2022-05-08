@@ -27,20 +27,20 @@ export const ContactForm: React.FC<ContactFormPropsType> = ({setSubmitResultMess
         <form onSubmit={sendMessage} name="contact_form" ref={formRef} className="contact-form">
             <ul className="contact-form__list">
                 <li className="contact-form__name">
-                    <input type="text" autoComplete="off" placeholder="Your Name" name="name" />
+                    <input type="text" autoComplete="off" required placeholder="Your Name" name="name" />
                     <label></label>
                 </li>
                 <li className="contact-form__email">
-                    <input type="email" autoComplete="on" placeholder="Your Email" name="email" />
+                    <input type="email" autoComplete="on" required placeholder="Your Email" name="email" />
                     <label></label>
                 </li>
                 
                 <li className="contact-form__subject">
-                    <input type="text" autoComplete="off" placeholder="Subject" name="subject" />
+                    <input type="text" autoComplete="off" required placeholder="Subject" name="subject" />
                     <label></label>
                 </li>
                 <li className="contact-form__message">
-                    <textarea placeholder="Message" name="message" />
+                    <textarea placeholder="Message" required name="message" />
                     <label></label>
                 </li>
                 <li className="contact-form__btn">

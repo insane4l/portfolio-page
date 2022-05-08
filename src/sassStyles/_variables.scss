@@ -1,8 +1,8 @@
 // SCREEN SIZES
 $screen-sm: 576px;
 $screen-md: 768px;
-$screen-lg: 992px;
-$screen-xl: 1200px;
+$screen-lg: 991px;
+$screen-xl: 1199px;
 $screen-xxl: 1300px;
 $screen-full: 1400px;
 
@@ -39,13 +39,9 @@ $warningColor: #b3465c;
 // ________Text Extends
 %section-title {
     font-family: 'Open Sans', sans-serif;
-    font-size: 54px;
-    line-height: 64px;
+    font-size: 3rem;
+    line-height: 3.3rem;
     font-weight: 700;
-    // font-family: 'Heebo', sans-serif;
-    // font-size: 50px;
-    // line-height: 50px;
-    // font-weight: 900;
     color: $primaryTextColor;
 }
 
@@ -75,28 +71,3 @@ $warningColor: #b3465c;
     letter-spacing: 0.06rem;
     color: $secondaryTextColor;
 }
-
-
-// // ________Buttons Extends
-// %button {
-//     color: $bgBlockColor;
-//     background-color: $bgPrimaryLightColor;
-//     &:hover {
-//         opacity: 0.8;
-//     }
-// }
-
-// // opposite button
-// %opp-button {
-//     border: 1px solid $bgPrimaryLightColor;
-//     color: $bgPrimaryLightColor;
-//     background-color: $bgBlockColor;
-// }
-
-
-
-// // ________Blocks Extends
-// %block {
-//     box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.2);
-//     background-color: $bgBlockColor;
-// }

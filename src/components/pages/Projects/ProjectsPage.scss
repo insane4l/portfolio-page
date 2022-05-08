@@ -1,16 +1,16 @@
 @import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
 
 .projects-section {
     display: flex;
     align-items: center;
     width: 100%;
     height: 100%;
-
     &-box {
         display: flex;
-        align-items: end;
-        gap: 55px;
-        margin-bottom: 50px;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
         &_left {
             display: flex;
             flex-direction: column;
@@ -23,9 +23,75 @@
     }
     &__descr {
         @extend %descr-text;
-        margin-bottom: 160px;
+        margin-bottom: 30px;
     }
     &__cards {
+        margin-right: 80px;
+    }
+}
 
+
+
+
+
+
+
+
+
+
+
+
+// media queries
+.projects-section {
+    @include customMaxBreakPoint(880px) {
+        display: block;
+    }
+    @include smMaxBreakPoint {
+        min-height: calc(100vh - 115px);
+        padding-bottom: 50px;
+    }
+    &-box {
+       @include customMinBreakPoint(1600px) {
+           gap: 100px;
+       }
+       @include customMinBreakPoint(1280px) {
+           flex-direction: row;
+           gap: 40px;
+           align-items: end;
+           margin-bottom: 50px;
+       }
+       @include xxlMaxBreakPoint {
+           flex-direction: row;
+           gap: 10px;
+       }
+       @include customMaxBreakPoint(1279px) {
+           flex-direction: column;
+           margin-bottom: 0;
+           align-items: start;
+       }
+       @include customMaxBreakPoint(880px) {
+            padding-top: 30px;
+            align-items: center;
+        }
+    }
+    &__descr {
+        @include customMaxBreakPoint(1599px) {
+            margin-bottom: 160px;
+        }
+        @include customMaxBreakPoint(1279px) {
+            margin-bottom: 10px;
+        }
+        
+    }
+    &__cards {
+        @include customMinBreakPoint(1440px) {
+            margin-right: 0;
+        }
+        @include customMaxBreakPoint(1279px) {
+            margin-right: 0;
+        }
+        @include lgMaxBreakPoint {
+            
+        }
     }
 }

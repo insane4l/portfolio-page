@@ -90,6 +90,9 @@ body {
 	user-select: none;
 	margin-bottom: 30px;
 	transform: translateX(-40px);
+	@include customMaxBreakPoint(880px) {
+		transform: translateX(0);
+	}
 }
 
 .button {
@@ -104,10 +107,14 @@ body {
 	color: $primaryTextColor;
 	background-color: transparent;
 	user-select: none;
+	text-align: center;
 }
 .button:hover {
 	// background-color: lighten($primaryColor, 1%);
 	background-color: rgba($primaryColor, .2);
+	@include lgMaxBreakPoint {
+		background-color: transparent;
+	}
 }
 
 

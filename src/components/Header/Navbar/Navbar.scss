@@ -1,4 +1,5 @@
 @import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
 
 .navbar {
     width: 100%;
@@ -69,5 +70,96 @@
         width: 0;
         margin-left: 0;
         transform: rotate(90deg);
+    }
+}
+
+
+
+
+
+
+// media queries
+.navbar {
+    @include lgMaxBreakPoint {
+        width: auto;
+        padding: 0 40px;
+    }
+    @include smMaxBreakPoint {
+        width: 100%;
+        padding: 10px 0 0 0;
+    }
+    &__list {
+        @include lgMaxBreakPoint {
+            flex-direction: row;
+            gap: 25px;
+        }
+        @include mdMaxBreakPoint {
+            gap: 20px;
+        }
+        @include smMaxBreakPoint {
+            justify-content: center;
+            gap: 10px;
+            background-color: $secondaryBgColor;
+        }
+    }
+    &__link {
+        @include lgMaxBreakPoint {
+            width: 50px;
+        }
+        @include mdMaxBreakPoint {
+            width: 40px;
+        }
+        @include smMaxBreakPoint {
+            padding: 5px 0;
+        }
+    }
+    &__link-active:after {
+        @include lgMaxBreakPoint {
+            display: none;
+        }
+    }
+    &__link-label {
+        @include lgMaxBreakPoint {
+            display: none;
+        }
+    }
+    .navbar__list_collapsed {
+        @include smMaxBreakPoint {
+            
+        }
+    }
+    &__link:hover .navbar__link-icon {
+        @include lgMaxBreakPoint {
+            filter: none;
+        }
+    }
+    &__link-active .navbar__link-icon {
+        @include lgMaxBreakPoint {
+            filter: invert(28%) sepia(97%) saturate(6367%) hue-rotate(342deg) brightness(94%) contrast(97%);
+        }
+    }
+    &__link-active:hover .navbar__link-icon {
+        @include lgMaxBreakPoint {
+            filter: invert(28%) sepia(97%) saturate(6367%) hue-rotate(342deg) brightness(94%) contrast(97%);
+        }
+    }
+}
+
+
+.navbar {
+    @include smMaxBreakPoint {
+        transition: .8s all;
+        transform: translateX(0);
+        padding-top: 10px;
+    }
+}
+
+.main-logo_collapsed {
+    +.navbar {
+        @include smMaxBreakPoint {
+            height: 0;
+            padding-top: 0;
+            transform: translateX(calc(-100% - 20px));
+        }
     }
 }

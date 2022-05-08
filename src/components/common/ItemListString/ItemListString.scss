@@ -1,15 +1,28 @@
 @import '../../../sassStyles/variables';
+@import '../../../sassStyles/mixins';
 
 .item-list-string {
     @extend %decorated-text;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 .item-list-elem {
-    
+    margin-top: 5px;
 }
 .item-list-decorator {
+    margin-top: 5px;
     color: $primaryColor;
+}
+
+
+
+
+
+// media queries
+.item-list-string {
+    @include customMaxBreakPoint(500px) {
+        flex-wrap: wrap;
+    }
 }

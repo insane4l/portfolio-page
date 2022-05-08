@@ -69,7 +69,7 @@ const projects: Array<ProjectItemType> = [
 export const ProjectsPage = () => {
     const preloaderDuration = 1500
 
-    const isSmallerThanLgBreakPoint = useMediaQuery({ query: `(max-width: 992px)`})
+    const isSmallerThanXXLBreakPoint = useMediaQuery({ query: `(max-width: 1279px)`})
 
     const [fullSizeImageMode, setFullSizeImageMode] = useState(false)
     const [selectedCard, setSelectedCard] = useState<ProjectItemType>(projects[0])
@@ -90,13 +90,13 @@ export const ProjectsPage = () => {
                     <div className="projects-section-box_left">
                         <h2 className="section-title projects-section__title">Portfolio</h2>
                         <p className="projects-section__descr">Here are some of my projects:</p>                    
-                        {!isSmallerThanLgBreakPoint 
+                        {!isSmallerThanXXLBreakPoint 
                             && <PreviewSlider cards={projects} selectedCardId={selectedCard.id} selectCard={setSelectedCard} />
                         }
                     </div>
 
                     <div className="projects-section__cards">
-                        {isSmallerThanLgBreakPoint
+                        {isSmallerThanXXLBreakPoint
                             ? <CardsSlider cards={projects} />
                             : <CardsStack selectedCard={selectedCard} onCardImageClick={showFullSizeImage}/>
                         }
@@ -105,7 +105,7 @@ export const ProjectsPage = () => {
 
                 <div className="projects-section_right-box"> */}
                     
-                    {/* {!isSmallerThanLgBreakPoint && <CardsStack selectedCard={selectedCard} onCardImageClick={showFullSizeImage}/>} */}
+                    {/* {!isSmallerThanXXLBreakPoint && <CardsStack selectedCard={selectedCard} onCardImageClick={showFullSizeImage}/>} */}
 
                 </div>
 

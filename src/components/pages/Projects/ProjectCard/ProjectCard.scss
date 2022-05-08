@@ -1,4 +1,5 @@
 @import '../../../../sassStyles/variables';
+@import '../../../../sassStyles/mixins';
 
 
 .project__card {
@@ -50,7 +51,8 @@
         position: relative;
         width: 100%;
         height: 55%;
-        padding: 30px 30px 25px 30px; 
+        padding: 30px 30px 25px 30px;
+        user-select: none;
         // padding: 45px 40px 45px 40px; // with after & before decorators
         background-color: $secondaryBgColor;
         // &::before {
@@ -115,5 +117,46 @@
     }
     &-link:hover {
         transform: scale(1.2);
+    }
+}
+
+
+
+
+
+
+// media queries
+.project__card {
+    @include customMaxBreakPoint(430px) {
+        width: 315px;
+    }
+    &-info {
+        @include customMaxBreakPoint(430px) {
+            padding: 20px;
+        }
+        @include customMaxBreakPoint(430px) {
+            justify-content: start;
+        }
+        .project__card-footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex: 1;
+        }
+    }
+    &-descr {
+        @include customMaxBreakPoint(430px) {
+            height: 110px;
+        }
+    }
+    &-technologies {
+        @include customMaxBreakPoint(430px) {
+            margin-top: 10px;
+        }
+    }
+    &-links {
+        @include customMaxBreakPoint(430px) {
+            margin-top: 5px;
+        }
     }
 }

@@ -14,7 +14,7 @@ export const ContactPage = () => {
     
     const timerId = useRef<number>()
 
-    const [alertMessage, setAlertMessage] = useState('aaaaa')
+    const [alertMessage, setAlertMessage] = useState('')
     const [alertMessageStyle, setAlertMessageStyle] = useState<SuperAlertVariantType>(undefined)    
 
     useEffect(() => {
@@ -52,7 +52,7 @@ export const ContactPage = () => {
                 <div className="contact-section__map">
                     <ContactDetails />
                     
-                    <Map provider={stamenToner} defaultCenter={[58, 20.8]} defaultZoom={5}>
+                    <Map metaWheelZoom={true} provider={stamenToner} defaultCenter={[58, 20.8]} defaultZoom={5}>
                         <ZoomControl />
                         {/* 59.37666, 28.1921 */}
                         <Marker width={40} color={"red"} anchor={[59.2, 27.6]} />

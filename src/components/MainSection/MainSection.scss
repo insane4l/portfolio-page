@@ -1,4 +1,5 @@
 @import '../../sassStyles/variables';
+@import '../../sassStyles/mixins';
 
 .main-section {
     position: relative; // dont change (preloader(absolute) is depend from this SIZE + POSITION)
@@ -6,4 +7,13 @@
     height: 100%;
     background-color: $primaryBgColor;
     // padding-left: 180px; // left menu max width 180px
+}
+
+
+// // media queries
+
+.main-section {
+    @include smMaxBreakPoint {
+        overflow: hidden;
+    }
 }

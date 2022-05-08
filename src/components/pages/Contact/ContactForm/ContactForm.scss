@@ -1,4 +1,5 @@
 @import '../../../../sassStyles/variables';
+@import '../../../../sassStyles/mixins';
 
 .contact-form {
     width: 100%;
@@ -90,3 +91,39 @@
 }
 
 
+
+
+
+
+.contact-form {
+    &__list {
+        @include smMaxBreakPoint {
+            grid-template-areas: 
+                "name name"
+                "email email"
+                "subject subject"
+                "message message"
+                "btn btn"; 
+        }
+        .contact-form__btn {
+            button {
+                @include smMaxBreakPoint {
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+    .contact-form__message {
+        textarea {
+            @include customMaxBreakPoint(880px) {
+                height: 150px;
+            }
+            @include mdMaxBreakPoint {
+                height: 100px;
+            }
+            @include smMaxBreakPoint {
+                height: 200px;
+            }
+        }
+    }
+}

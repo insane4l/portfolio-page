@@ -1,8 +1,26 @@
 @import '../sassStyles/variables';
+@import '../sassStyles/mixins';
 
 .app__wrapper {
     display: flex;
     justify-content: flex-start;
     width: 100vw;
     height: 100vh;
+}
+
+
+
+
+
+
+
+// media queries
+.app__wrapper {
+    @include lgMaxBreakPoint {
+        flex-direction: column;
+    }
+    @include smMaxBreakPoint {
+        min-height: 100vh;
+        height: auto;
+    }
 }
