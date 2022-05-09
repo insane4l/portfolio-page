@@ -5,7 +5,8 @@ import { techLogos } from '../../../assets/icons/icons';
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection'
 import { DoubleTextLine } from '../../common/DoubleTextLine/DoubleTextLine';
 import { ItemListString } from '../../common/ItemListString/ItemListString';
-import { TrailOfImages } from '../../common/TrailOfImages/TrailOfImages';
+import { StaticSourceOptionsType, TrailOfImages } from '../../common/TrailOfImages/TrailOfImages';
+import { isMobile } from 'react-device-detect'
 import './SkillsPage.scss'
 
 const listsId = [
@@ -16,6 +17,10 @@ export const SkillsPage = () => {
     const preloaderDuration = 1200;
 
     const isSmallScreen = useMediaQuery({ query: `(max-width: 880px)`})
+
+    const trailOfImagesMobileProps: StaticSourceOptionsType | undefined = isMobile 
+        ? {posTop: '70%', posLeft: '50%', interval: 300}
+        : undefined
 
     const [skillSections, setSkillSections] = useState([
         {id: listsId[0], title: ['Languages', ''], uncollapsed: false},
@@ -76,7 +81,7 @@ export const SkillsPage = () => {
     return (
         <AnimatedSection preloaderDuration={preloaderDuration}>
             <div className="skills-section">
-                <TrailOfImages images={techLogos} />
+                <TrailOfImages images={techLogos} staticSource={trailOfImagesMobileProps}/>
 
                 <div className="skills-section-box_left">
                     <h2 className="section-title skills-section__title">Skills & Experience</h2>

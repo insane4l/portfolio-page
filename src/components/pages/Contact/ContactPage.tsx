@@ -1,6 +1,7 @@
 import { Map, Marker, ZoomControl } from 'pigeon-maps'
 import { stamenToner } from 'pigeon-maps/providers'
 import React, { useEffect, useRef, useState } from 'react'
+import { useMediaQuery } from 'react-responsive';
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection';
 import { SuperAlert, SuperAlertVariantType } from '../../common/SuperAlert/SuperAlert';
 import { ContactDetails } from './ContactDetails/ContactDetails';
@@ -11,6 +12,9 @@ import './ContactPage.scss'
 export const ContactPage = () => {
     const preloaderDuration = 800
     const alertMessageDisplayDuration = 8000
+
+    const isSmallScreen = useMediaQuery({query: '(max-width: 768px)'})
+    let mapZoomValue = isSmallScreen ? 4 : 5
     
     const timerId = useRef<number>()
 
@@ -52,7 +56,7 @@ export const ContactPage = () => {
                 <div className="contact-section__map">
                     <ContactDetails />
                     
-                    <Map metaWheelZoom={true} provider={stamenToner} defaultCenter={[58, 20.8]} defaultZoom={5}>
+                    <Map touchEvents={false} provider={stamenToner} defaultCenter={[58, 20.8]} defaultZoom={mapZoomValue}>
                         <ZoomControl />
                         {/* 59.37666, 28.1921 */}
                         <Marker width={40} color={"red"} anchor={[59.2, 27.6]} />

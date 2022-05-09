@@ -10,7 +10,9 @@ export const AboutPage = () => {
     const preloaderDuration = 900;
 
     const isSmallScreen = useMediaQuery({ query: `(max-width: 991px)`})
-    const bgFlyingElementsCount = isSmallScreen ? 80 : 130
+    const isMobileScreen = useMediaQuery({ query: `(max-width: 576px)`})
+
+    const bgFlyingElementsCount = isSmallScreen ? (isMobileScreen ? 50 : 80) : 130
 
     return (
 

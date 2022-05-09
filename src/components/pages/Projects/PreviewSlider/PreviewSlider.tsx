@@ -25,7 +25,7 @@ export const PreviewSlider: React.FC<PreviewSliderPropsType> = ({cards, selectCa
                 slidesPerView={3}
                 loop
                 allowTouchMove={false}
-                // autoplay={{delay: 3000, pauseOnMouseEnter: true, disableOnInteraction: false}}
+                autoplay={{delay: 3000, pauseOnMouseEnter: true, disableOnInteraction: false}}
                 // keyboard={{enabled: true}}
                 // onKeyPress={(swiper: any, keyCode: any) => console.log(keyCode)}
                 // onSlideChange={() => console.log('slide change')}

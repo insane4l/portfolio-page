@@ -13,9 +13,10 @@ export const HomePage = () => {
     const preloaderDuration = 1100;
 
     const isLargeScreen = useMediaQuery({ query: `(min-width: 880px)`})
+    const isMobileScreen = useMediaQuery({ query: `(max-width: 576px)`})
 
     const roles = useMemo(() => ['Husband', 'Father', 'Developer'], [])
-    const bgFlyingElementsCount = isLargeScreen ? 130 : 80
+    const bgFlyingElementsCount = isLargeScreen ? 130 : (isMobileScreen ? 50 : 80)
     
 
     return (

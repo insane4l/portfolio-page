@@ -155,6 +155,10 @@
                 right: -20px;
                 transform: rotate(0);
             }
+            @include customMaxBreakPoint(322px) {
+                top: 40px;
+                transform: rotate(15deg);
+            }
         }
         &:hover {
             .nickname {
@@ -165,6 +169,10 @@
                     top: 92px;
                     right: -20px;
                     transform: rotate(0);
+                }
+                @include customMaxBreakPoint(322px) {
+                    top: 40px;
+                    transform: rotate(15deg);
                 }
             }
         }

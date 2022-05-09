@@ -10,16 +10,26 @@ type TechItemType = {
     styles: { top: string, left: string }
 }
 
+// todo: create styled source point (when static source effect mode on)
 // TrailOfImagesEffect
-export const TrailOfImages: React.FC<TrailOfImagesPropsType> =  React.memo( ({images}) => {
+export const TrailOfImages: React.FC<TrailOfImagesPropsType> =  React.memo( ({images, staticSource}) => {
     // console.log('wrapper rendered');
     
+    let deleteItemsInterval = staticSource 
+        // (css animation duration 1000ms)
+        ? (staticSource.interval + 1000)
+        // 200ms hardcoded - its when mouse move trail of images effect 
+        // todo: dependence of trailDensity (create prop)
+        : 200    
+    
     const wrapperRef = useRef(null)
-    let intervalRef = useRef(null)
+    let deleteItemsTimerId = useRef<number | null>(null)
+    let staticSourceTimerId = useRef<number | null>(null)
+
     const throttledItemsCreating = useRef(
         throttle(async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
             await createNewItem(e)
-        }, 90) // todo: prop trailDensity  (max 0, not recomended)
+        }, 90) // todo: create component prop trailDensity  (max 0, not recomended)
       ).current;
     
     
@@ -28,9 +38,19 @@ export const TrailOfImages: React.FC<TrailOfImagesPropsType> =  React.memo( ({im
 
     useEffect(() => {
         
+        if (staticSource) {
+            staticSourceTimerId.current = +setInterval(() => {
+                // console.log('tic tic static source items');
+                
+                createNewItem(undefined, staticSource.posTop, staticSource.posLeft);
+            }, staticSource.interval)
+        }
+
+        // cleanup
         return () => {
-            // @ts-ignore
-            clearInterval(intervalRef.current)
+
+            staticSourceTimerId.current && clearInterval(staticSourceTimerId.current)
+            deleteItemsTimerId.current && clearInterval(deleteItemsTimerId.current)
             throttledItemsCreating.cancel()
         };
     }, [])
@@ -38,16 +58,14 @@ export const TrailOfImages: React.FC<TrailOfImagesPropsType> =  React.memo( ({im
     useEffect(() => {
         // console.log('effect');
 
-        if (items.length > 0 && !intervalRef.current) {
-            // debugger;
-            // @ts-ignore
-            intervalRef.current = getInterval()
+        if (items.length > 0 && !deleteItemsTimerId.current) {
+            deleteItemsTimerId.current = startDeleteItemsTimer()
         } 
         
-        if (items.length <= 0 && intervalRef.current) {
-            // @ts-ignore
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
+        if (items.length <= 0 && deleteItemsTimerId.current) {
+
+            clearInterval(deleteItemsTimerId.current);
+            deleteItemsTimerId.current = null;
         }
     }, [items])
 
@@ -63,15 +81,15 @@ export const TrailOfImages: React.FC<TrailOfImagesPropsType> =  React.memo( ({im
         })
     }
 
-    const getInterval = () => {
+    const startDeleteItemsTimer = () => {
 
         const intervalId = setInterval(() => {
-            // console.log('tic tic');
+            // console.log('tic tic delete items');
             
             deleteOldestItem()
-        }, 200) // todo: dependence of trailDensity
+        }, deleteItemsInterval)
 
-        return intervalId
+        return +intervalId
     }
 
     function randomInt(min: number, max: number) {
@@ -79,22 +97,37 @@ export const TrailOfImages: React.FC<TrailOfImagesPropsType> =  React.memo( ({im
     }
     const mouseMoveHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         // console.log('mousemove');
-
-        throttledItemsCreating(e);
+        if (!staticSource) {
+            throttledItemsCreating(e)
+        }
     }
 
-    const createNewItem = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const createNewItem = (e?: React.MouseEvent<HTMLDivElement, MouseEvent>, positionTop?: string, positionLeft?: string) => {
         // console.log('created 1 item');
 
-        //@ts-ignore
-        let x = e.clientX - wrapperRef.current!.getBoundingClientRect().left
-        //@ts-ignore
-        let y = e.clientY - wrapperRef.current!.getBoundingClientRect().top
+        let top: string
+        let left: string
+
+        if (positionTop && positionLeft) {
+
+            top = positionTop
+            left = positionLeft
+
+        } else if (e) {
+            //@ts-ignore
+            top = `${e.clientY - wrapperRef.current!.getBoundingClientRect().top}px`
+            //@ts-ignore
+            left = `${e.clientX - wrapperRef.current!.getBoundingClientRect().left}px`
+        } else {
+
+            return
+        }
+
         let rotateStyle = `rotate(${Math.random() * 360}deg)`
 
         let randomIcon = images[randomInt(0, (images.length - 1))]
 
-        let newItem = {id: v1(), img: randomIcon, styles: {top: `${y}px`, left: `${x}px`, transform: rotateStyle}}
+        let newItem = {id: v1(), img: randomIcon, styles: {top, left, transform: rotateStyle}}
         
         setItems(state => [...state, newItem])
     }
@@ -125,4 +158,23 @@ const ImageItem: React.FC<{img: string, styles: React.CSSProperties}> = React.me
 
 type TrailOfImagesPropsType = {
     images: Array<string>
+    /** 
+     * If is specified, mouse move trail of images effect will be disabled
+     */
+    staticSource?: StaticSourceOptionsType
+}
+
+export type StaticSourceOptionsType = {
+    /**
+     * top position - css property value
+     */
+    posTop: string
+    /**
+     * left position - css property value
+     */
+    posLeft: string
+    /**
+     * interval in milliseconds - interval between the creation of each new element
+     */
+    interval: number
 }
