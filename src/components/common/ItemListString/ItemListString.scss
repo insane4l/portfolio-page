@@ -5,17 +5,23 @@
     @extend %decorated-text;
     display: flex;
     align-items: center;
+    // gap: 5px;
     // overflow: hidden;
 }
 
 .item-list-elem {
     margin-top: 5px;
+    &:last-child {
+        margin-right: 0;
+    }
 }
 .item-list-decorator {
-    margin-top: 5px;
     color: $primaryColor;
 }
 
+.flex-space-between {
+    justify-content: space-between;
+}
 
 
 

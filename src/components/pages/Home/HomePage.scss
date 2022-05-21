@@ -43,11 +43,13 @@
     }
     &__buttons {
         display: flex;
-        gap: 22px;
         transform: translateX(-40px);
     }
     &__btn {
-        
+        margin-right: 22px;
+        &:last-child {
+            margin-right: 0;
+        }
     }
     &__image {
         display: flex;
@@ -113,7 +115,7 @@
     }
     &__image {
         @include xlMaxBreakPoint {
-            width: 50%;
+            width: 66%;
         }
         @include lgMaxBreakPoint {
             width: 43%;
@@ -184,6 +186,15 @@
         @include customMaxBreakPoint(430px) {
             flex-direction: column;
         }
+    }
+    &__btn {
+        @include customMaxBreakPoint(430px) {
+            margin-right: 0;
+            margin-bottom: 22px;
+        }
+        // &:last-child {
+        //     margin-bottom: 0;
+        // }
     }
     .roles__item {
         @include customMaxBreakPoint(480px) {

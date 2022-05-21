@@ -14,25 +14,46 @@
     &__list {
         display: flex;
         flex-direction: column;
-        gap: 33px;
+        // gap: 33px; only 89% browsers support
         width: calc(100% - 40px);
         margin: 25px 0 55px 0;
     }
     &__li {
-        display: inline-flex;
-        justify-content: flex-start;
+        .dtl__container {
+            display: inline-flex;
+            justify-content: flex-start;
+        }
+        
+        &-wrapper { // instead of flex gap property
+            margin-bottom: 33px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
     }
     &__li-title {
         @extend %title-text;
         color: $primaryColor;
         justify-content: flex-start;
-        padding: 0 0 20px 0;
+        // padding: 0 0 20px 0;
+        // padding: 0;
         // border-bottom: 1px solid rgba(255,255,255, .1);
-        border-bottom: 1px solid rgba($primaryColor, .1);
+        // border-bottom: 1px solid rgba($primaryColor, 1);
+        // background-color: rgba($primaryColor, .1);
+        // &::after {
+        //     content:'';
+        //     position: absolute;
+        //     left: 0;
+        //     right: 0;
+        //     bottom: -10px;
+        //     height: 3px;
+        //     background-color: rgba($primaryColor, .1);
+        //     pointer-events: none;
+        // }
     }
     &__li-descr {
         justify-content: flex-start;
-        margin-top: 10px;
+        // margin-top: 10px;
         .item-list-string {
             letter-spacing: 0.08rem;
             text-transform: uppercase;
@@ -55,42 +76,39 @@
     }
     &-box_left {
         @include customMaxBreakPoint(880px) {
-            width: 90%;
+            width: 100%;
             padding-top: 30px;
             text-align: center;
         }
     }
     &__list {
         @include customMaxBreakPoint(880px) {
-            gap: 50px;
+            width: 100%;
         }
     }
-    &__li, &__li-title, &__li-descr {
+    &__li .dtl__container, &__li-title, &__li-descr {
         @include customMaxBreakPoint(880px) {
             justify-content: center;
         }
     }
     &__li {
+        &-wrapper { // instead of flex gap property
+            @include customMaxBreakPoint(880px) {
+                margin-bottom: 55px;
+            }
+            @include smMaxBreakPoint {
+                margin-bottom: 44px;
+            }
+        }
         .item-list-string {
             @include smMaxBreakPoint {
                 justify-content: center;
             }
         }
     }
-    &__li-title {
-        @include customMaxBreakPoint(880px) {
-            border: none;
-        }
-    }
-    &__li-descr {
-        @include customMaxBreakPoint(880px) {
-            margin-top: 15px;
-        }
-        @include smMaxBreakPoint {
-            margin-top: 35px;
-        }
-        @include customMaxBreakPoint(370px) {
-            margin-top: 45px;
-        }
-    }
+    // &__li-title {
+    //     @include customMaxBreakPoint(880px) {
+    //         border: none;
+    //     }
+    // }
 }

@@ -17,7 +17,6 @@
     }
     &__list {
         display: grid; 
-        gap: 10px; 
         grid-template-areas: 
             "name email"
             "subject subject"
@@ -26,10 +25,15 @@
         width: 100%;
         li {
             position: relative;
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
         .contact-form {
             &__name {
                 grid-area: name;
+                margin-right: 10px;
             }
             &__email {
                 grid-area: email;
@@ -94,7 +98,7 @@
 
 
 
-
+// media queries
 .contact-form {
     &__list {
         @include smMaxBreakPoint {
@@ -105,10 +109,15 @@
                 "message message"
                 "btn btn"; 
         }
+        .contact-form__name {
+            @include smMaxBreakPoint {
+                margin-right: 0;
+            }
+        }
         .contact-form__btn {
             button {
-                @include smMaxBreakPoint {
-                    margin: 0 auto;
+                @include customMaxBreakPoint(880px) {
+                    margin: 5px auto 0 auto;
                 }
             }
         }
@@ -118,11 +127,11 @@
             @include customMaxBreakPoint(880px) {
                 height: 150px;
             }
-            @include mdMaxBreakPoint {
-                height: 100px;
-            }
+            // @include mdMaxBreakPoint {
+            //     height: 100px;
+            // }
             @include smMaxBreakPoint {
-                height: 200px;
+                // height: 200px;
             }
         }
     }

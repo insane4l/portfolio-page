@@ -24,6 +24,7 @@
     &__map {
         position: fixed;
         right: -10%;
+        top: 0;
         bottom: 0;
         width: 55%;
         background-color: #fff;
@@ -38,41 +39,53 @@
 .contact-section {
     @include customMaxBreakPoint(880px) {
         flex-direction: column;
+        justify-content: flex-start;
     }
     &_left-box {
         @include customMaxBreakPoint(880px) {
             width: 100%;
             padding-top: 30px;
+            padding-bottom: 40px;
+            text-align: center;
         }
     }
     &__map {
-        @include customMinBreakPoint(881px) {
-            top: 0;
-        }
         @include customMaxBreakPoint(880px) {
-            bottom: 20px;
-            left: 0;
+            position: relative;
             right: 0;
-            width: 100%;
+            left: 0;
+            width: 120%;
+            flex: 1;
+        }
+
+        @include customMaxBreakPoint(880px) {
+            // bottom: 20px;
+            // left: -10%;
+            // right: -10%;
+            // width: 120%;
             // height: 200px;
         }
-        @media screen and (max-width: 880px) and (min-height: 700px) {
-            height: 25%;
-        }
-        @media screen and (max-width: 880px) and (min-height: 920px) {
-            height: 300px;
-        }
-        @media screen and (max-width: 880px) and (min-height: 1020px) {
-            height: 400px;
-        }
-        @media screen and (max-width: 880px) and (min-height: 1130px) {
-            height: 500px;
-        }
+        // @media screen and (max-width: 880px) and (min-height: 700px) {
+        //     height: 25%;
+        // }
+        // @media screen and (max-width: 880px) and (min-height: 920px) {
+        //     height: 300px;
+        // }
+        // @media screen and (max-width: 880px) and (min-height: 1020px) {
+        //     height: 400px;
+        // }
+        // @media screen and (max-width: 880px) and (min-height: 1130px) {
+        //     height: 500px;
+        // }
         @include smMaxBreakPoint {
-            position: relative;
-            bottom: 0;
+            flex: auto;
+            // position: relative;
+            // left: 0;
+            // right: 0;
+            // bottom: 0;
+            // width: 120%;
             height: 450px;
-            margin-top: 40px;
+            // margin-top: 40px;
         }
     }
 }

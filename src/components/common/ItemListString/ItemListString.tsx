@@ -5,21 +5,20 @@ import './ItemListString.scss'
 /** Decorated item list string */
 export const ItemListString: React.FC<ItemListStringPropsType> = ({items, itemsSpacing, className}) => {
 
-    const elementAlignmentStyles = itemsSpacing
-        ? {gap: `${itemsSpacing}px`} 
-        : {justifyContent: 'space-between'}
+    const wrapperStyles = itemsSpacing ? '' : 'flex-space-between'
+    const elStyles = itemsSpacing ? {marginRight: `${itemsSpacing}px`} : {}
 
-    const itemsListStringFinalCN = className ? `item-list-string ${className}` : 'item-list-string'
+    const itemsListStringFinalCN = `item-list-string ${wrapperStyles} ${className || ''}`
 
     const mappedItems = items.map((el, indx, arr) => (
         <React.Fragment key={indx}>
-            <span className="item-list-elem">{el}</span>
-            {indx !== (arr.length - 1) && <span className="item-list-decorator">▸</span>}
+            <span style={elStyles} className="item-list-elem">{el}</span>
+            {indx !== (arr.length - 1) && <span style={elStyles} className="item-list-elem item-list-decorator">▸</span>}
         </React.Fragment>
     ))
 
     return (
-        <div style={elementAlignmentStyles} className={itemsListStringFinalCN}>
+        <div className={itemsListStringFinalCN}>
             {mappedItems}
         </div>
     )

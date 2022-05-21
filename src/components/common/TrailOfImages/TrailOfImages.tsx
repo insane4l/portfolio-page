@@ -12,7 +12,7 @@ type TechItemType = {
 
 // todo: create styled source point (when static source effect mode on)
 // TrailOfImagesEffect
-export const TrailOfImages: React.FC<TrailOfImagesPropsType> =  React.memo( ({images, staticSource}) => {
+export const TrailOfImages: React.FC<TrailOfImagesPropsType> =  React.memo( ({images, staticSource}) => { // staticSourcePosition
     // console.log('wrapper rendered');
     
     let deleteItemsInterval = staticSource 
@@ -159,6 +159,7 @@ const ImageItem: React.FC<{img: string, styles: React.CSSProperties}> = React.me
 type TrailOfImagesPropsType = {
     images: Array<string>
     /** 
+     * Static source position
      * If is specified, mouse move trail of images effect will be disabled
      */
     staticSource?: StaticSourceOptionsType

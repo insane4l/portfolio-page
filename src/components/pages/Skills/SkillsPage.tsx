@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useMediaQuery } from 'react-responsive';
 import { v1 } from 'uuid';
 import { techLogos } from '../../../assets/icons/icons';
 import { AnimatedSection } from '../../common/AnimatedSection/AnimatedSection'
@@ -8,6 +7,7 @@ import { ItemListString } from '../../common/ItemListString/ItemListString';
 import { StaticSourceOptionsType, TrailOfImages } from '../../common/TrailOfImages/TrailOfImages';
 import { isMobile } from 'react-device-detect'
 import './SkillsPage.scss'
+import { RainOfImages } from '../../common/RainOfImages/RainOfImages';
 
 const listsId = [
     v1(), v1(), v1()
@@ -16,11 +16,9 @@ const listsId = [
 export const SkillsPage = () => {
     const preloaderDuration = 1200;
 
-    const isSmallScreen = useMediaQuery({ query: `(max-width: 880px)`})
-
-    const trailOfImagesMobileProps: StaticSourceOptionsType | undefined = isMobile 
-        ? {posTop: '70%', posLeft: '50%', interval: 300}
-        : undefined
+    // const trailOfImagesMobileProps: StaticSourceOptionsType | undefined = isMobile 
+    //     ? {posTop: '70%', posLeft: '50%', interval: 300}
+    //     : undefined
 
     const [skillSections, setSkillSections] = useState([
         {id: listsId[0], title: ['Languages', ''], uncollapsed: false},
@@ -35,7 +33,7 @@ export const SkillsPage = () => {
     }
 
     useEffect(() => {
-        if (isSmallScreen) {
+        if (isMobile) {
             setSkillSections(sections => sections.map(el => ({...el, uncollapsed: true})))
         }
     }, [])
@@ -57,31 +55,39 @@ export const SkillsPage = () => {
         }
 
         const onTextMouseOver = () => {
-            !isSmallScreen && uncollapseSkillSection()
+            !isMobile && uncollapseSkillSection()
         }
         const onTextMouseLeave = () => {
-            !isSmallScreen && collapseSkillSection()
+            !isMobile && collapseSkillSection()
         }
 
         return (
-            <DoubleTextLine 
-                key={section.id}
-                className="skills-section__li"
-                primaryTextCN="skills-section__li-title"
-                secondaryTextCN="skills-section__li-descr"
-                onMouseOver={onTextMouseOver}
-                onMouseLeave={onTextMouseLeave}
-                onClick={toggleCollapseMode}
-                doubleMode={section.uncollapsed}
-                primaryText={section.title}
-                secondaryText={<ItemListString itemsSpacing={10} items={skillLists[section.id]} />}/>
+            <div className="skills-section__li-wrapper">
+
+                <DoubleTextLine 
+                    key={section.id}
+                    className="skills-section__li"
+                    primaryTextCN="skills-section__li-title"
+                    secondaryTextCN="skills-section__li-descr"
+                    onMouseOver={isMobile ? undefined : onTextMouseOver}
+                    onMouseLeave={isMobile ? undefined : onTextMouseLeave}
+                    onClick={!isMobile ? undefined : toggleCollapseMode}
+                    doubleMode={section.uncollapsed}
+                    primaryText={section.title}
+                    secondaryText={<ItemListString itemsSpacing={10} items={skillLists[section.id]} />}/>
+            </div>
         )
     })
 
     return (
         <AnimatedSection preloaderDuration={preloaderDuration}>
             <div className="skills-section">
-                <TrailOfImages images={techLogos} staticSource={trailOfImagesMobileProps}/>
+                {
+                    isMobile
+                        ? <RainOfImages images={techLogos} imageWidth={10} />
+                        : <TrailOfImages images={techLogos} />
+                }
+                {/* <TrailOfImages images={techLogos} staticSource={trailOfImagesMobileProps}/> */}
 
                 <div className="skills-section-box_left">
                     <h2 className="section-title skills-section__title">Skills & Experience</h2>
@@ -90,23 +96,6 @@ export const SkillsPage = () => {
                         {mappedSkillSections}
                     </div>
                 </div>
-
-                {/* <div className="skills-section__list"> */}
-                    {/* <ItemListString itemsSpacing={6} items={['tessss', 'tdsat', 'dfasdsfs', 'ertyerthre']} />
-                    <DoubleTextLine primaryText={['firsfgfsdgsdfgsdfgdfsgdfsgd', 'lifdgfdsgdfsgfdsgdfsgdfs']} secondaryText='Secdfsgdfsgfdsgsdfgsdfgdsfgdfgond linedddddfsdgsdfgdfsgdfsgdfsgdddddddddd'/>
-                    <DoubleTextLine primaryText={['somename', '']} secondaryText='Watch Demo'/>
-                    <DoubleTextLine primaryText={['Todo', 'Lists']} secondaryText='Watch Demo'/> */}
-
-                    {/* <DoubleTextLine 
-                        className="skills-section__li"
-                        primaryTextCN="skills-section__li-title"
-                        secondaryTextCN="skills-section__li-descr"
-                        primaryText={['Social', 'Network']}
-                        secondaryText={<ItemListString itemsSpacing={6} items={['tessss', 'tdsat', 'dfasdsfs', 'ertyerthre']} />}/> */}
-
-                    {/* {mappedSkillsItems}
-                </div> */}
-                
             </div>
         </AnimatedSection>
 

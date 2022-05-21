@@ -10,12 +10,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 30px;
         &_left {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
+            margin-right: 30px;
         }
     }
     &__title {
@@ -51,34 +51,45 @@
         padding-bottom: 100px;
     }
     &-box {
-       @include customMinBreakPoint(1600px) {
-           gap: 100px;
-       }
        @include customMinBreakPoint(1280px) {
            flex-direction: row;
-           gap: 40px;
            align-items: end;
            margin-bottom: 50px;
        }
        @include xxlMaxBreakPoint {
            flex-direction: row;
-           gap: 10px;
        }
        @include customMaxBreakPoint(1279px) {
            flex-direction: column;
-           margin-bottom: 0;
            align-items: start;
        }
        @include customMaxBreakPoint(880px) {
             padding-top: 30px;
             align-items: center;
         }
+        &_left {
+            @include customMinBreakPoint(1750px) {
+                margin-right: 100px;
+            }
+            @include customMinBreakPoint(1280px) {
+                margin-right: 40px;
+            }
+            @include customMaxBreakPoint(1440px) {
+                margin-bottom: 30px;
+            }
+            @include customMaxBreakPoint(1340px) {
+                margin-right: 0;
+            }
+            @include customMaxBreakPoint(880px) {
+                text-align: center;
+            }
+        }
     }
     &__descr {
-        @include customMaxBreakPoint(1599px) {
+        @include customMinBreakPoint(1280px) {
             margin-bottom: 160px;
         }
-        @include customMaxBreakPoint(1279px) {
+        @include customMaxBreakPoint(1440px) {
             margin-bottom: 10px;
         }
         
@@ -87,11 +98,8 @@
         @include customMinBreakPoint(1440px) {
             margin-right: 0;
         }
-        @include customMaxBreakPoint(1279px) {
+        @include customMaxBreakPoint(1440px) {
             margin-right: 0;
-        }
-        @include lgMaxBreakPoint {
-            
         }
     }
 }

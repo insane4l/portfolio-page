@@ -51,8 +51,8 @@
         top: 8px;
     }
     @include mdMaxBreakPoint {
-        left: 40px;
-        padding: 10px;
+        // left: 40px;
+        // padding: 10px;
     }
     @include smMaxBreakPoint {
         left: 50%;

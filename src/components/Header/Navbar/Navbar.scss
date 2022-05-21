@@ -6,13 +6,17 @@
     &__list {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        // gap: 6px;
     }
     &__list-item {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
+        margin-bottom: 6px;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
 
@@ -91,15 +95,27 @@
     &__list {
         @include lgMaxBreakPoint {
             flex-direction: row;
-            gap: 25px;
         }
         @include mdMaxBreakPoint {
-            gap: 20px;
         }
         @include smMaxBreakPoint {
             justify-content: center;
-            gap: 10px;
             background-color: $secondaryBgColor;
+        }
+    }
+    &__list-item {
+        @include lgMaxBreakPoint {
+            margin-bottom: 0;
+            margin-right: 25px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        @include mdMaxBreakPoint {
+            margin-right: 20px;
+        }
+        @include smMaxBreakPoint {
+            margin-right: 10px;
         }
     }
     &__link {

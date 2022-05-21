@@ -9,13 +9,34 @@ export const DoubleTextLine: FC<DoubleTextLinePropsType> = memo( (
         className = '', primaryTextCN = '', secondaryTextCN = ''
 }) => {
 
-    const [textLineHeight, setTextLineHeight] = useState('')
-    const textLineRef = createRef<HTMLSpanElement>()
+    const [primaryTextHeight, setPrimaryTextHeightValue] = useState('')
+    const [containerPaddingBottom, setContainerPaddingBottom] = useState('')
+    const [wrapperHeight, setWrapperHeight] = useState('')
+
+    const primaryTextLineRef = createRef<HTMLSpanElement>()
+    const secondaryTextLineRef = createRef<HTMLSpanElement>()
 
     useEffect(() => {
-        const elHeight = textLineRef.current?.clientHeight
-        if (elHeight) setTextLineHeight(`${elHeight}px`)
+        const primaryLineHeight = primaryTextLineRef.current?.clientHeight
+        const secondaryLineHeight = secondaryTextLineRef.current?.clientHeight
+        if (primaryLineHeight) setPrimaryTextHeightValue(`${primaryLineHeight}px`)
+        if (secondaryLineHeight) setContainerPaddingBottom(`${secondaryLineHeight}px`)
+        if (primaryLineHeight && secondaryLineHeight) setWrapperHeight(`${(primaryLineHeight * 2) + secondaryLineHeight}px`)
     }, [])
+
+    useEffect(() => {
+        const primaryLineHeight = primaryTextLineRef.current?.clientHeight
+        const secondaryLineHeight = secondaryTextLineRef.current?.clientHeight
+
+        if (doubleMode) {
+            
+            if (secondaryLineHeight && primaryLineHeight) {
+                setContainerPaddingBottom(`${secondaryLineHeight - primaryLineHeight}px`)
+            }
+        } else {
+            if (secondaryLineHeight && primaryLineHeight) setContainerPaddingBottom(`${secondaryLineHeight + primaryLineHeight}px`)
+        }
+    }, [doubleMode])
 
     const onClickHandler = (e: MouseEv) => {
         onClick && onClick(e)
@@ -27,31 +48,45 @@ export const DoubleTextLine: FC<DoubleTextLinePropsType> = memo( (
         onMouseLeave && onMouseLeave(e)
     }
 
-    const doubleTextLineStyle = textLineHeight ? {paddingTop: textLineHeight, marginBottom: textLineHeight} : {}
 
-    const finalWrapperCN = `dtl__wrapper ${doubleMode ? "dtl_active" : ""} ${className}`
+    const containerStyle = primaryTextHeight ? {marginTop: primaryTextHeight, paddingBottom: containerPaddingBottom} : {}
+    const wrapperStyle = {height: wrapperHeight}
+    const primaryTextLineStyle = doubleMode ? {paddingBottom: primaryTextHeight} : {}
+
+
+    const finalWrapperCN = `dtl ${doubleMode ? "dtl_active" : ""} ${className}`
+    const finalPrimaryTextCN = `dtl__text dtl__primary ${primaryTextCN || ''}`
+    const finalSecondaryTextCN = `dtl__text dtl__secondary ${secondaryTextCN || ''}`
+    const pointerEventsMode = onMouseLeave ? 'pointer-events_disabled' : ''
     
     return (
-        <div 
-            onClick={onClickHandler} 
-            onMouseOver={onMouseOverHandler}
-            onMouseLeave={onMouseLeaveHandler}
-            style={doubleTextLineStyle}
-            className={finalWrapperCN}>
+        <div className={finalWrapperCN} style={wrapperStyle}>
 
-            <span className={`dtl__text dtl__primary ${primaryTextCN}`}>
-                <span ref={textLineRef} className="dtl__primary_p1">
-                    {`${primaryText[0]}\u00A0` || ''}
-                </span>
-                <span className="dtl__primary_p2">
-                    {primaryText[1] || ''}
-                </span>
-            </span>
+            <div 
+                style={containerStyle}
+                className="dtl__container">
 
-            <span className={`dtl__text dtl__secondary ${secondaryTextCN}`}>
-                {secondaryText}
-            </span>
-            
+                <span 
+                    className={finalPrimaryTextCN}
+                    style={primaryTextLineStyle}
+                    onClick={onClickHandler} 
+                    onMouseOver={onMouseOverHandler}
+                    onMouseLeave={onMouseLeaveHandler}>
+                        
+                    <span ref={primaryTextLineRef} className={"dtl__primary_p1 " + pointerEventsMode}>
+                        {`${primaryText[0]}\u00A0` || ''}
+                    </span>
+                    <span className={"dtl__primary_p2 " + pointerEventsMode}>
+                        {primaryText[1] || ''}
+                    </span>
+                </span>
+
+                <span ref={secondaryTextLineRef} className={finalSecondaryTextCN}>
+                    {secondaryText}
+                </span>
+                
+            </div>
+
         </div>
     )
 })
@@ -61,6 +96,9 @@ type DoubleTextLinePropsType = {
      * default: true
      */
     doubleMode?: boolean
+    /** To make the primaryText clickable
+     * onMouseLeave prop should be undefined 
+    */
     onClick?: (e: MouseEv) => void
     onMouseOver?: (e: MouseEv) => void
     onMouseLeave?: (e: MouseEv) => void
