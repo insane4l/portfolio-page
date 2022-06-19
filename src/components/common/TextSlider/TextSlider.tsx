@@ -31,7 +31,7 @@ export const TextSlider: React.FC<TextSliderPropsType> = React.memo( ({items, cl
 
     return (
             <>
-                {(itemIndx >= 0) 
+                {(items[itemIndx]) 
                     && <span className={className || ''} style={spanStyle}>
                         {items[itemIndx]}
                     </span>
